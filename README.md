@@ -21,6 +21,7 @@ if you do not want to this, fork this github and remove this code.
 ## Cordova cli ##
 ```c
 cordova plugin add com.cranberrygame.cordova.plugin.ad.chartboost
+```
 
 ## Crosswalk ##
 ```c
