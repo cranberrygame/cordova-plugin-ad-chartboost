@@ -45,9 +45,9 @@ https://plus.google.com/communities/117978754675005605917
 ```c
 ```
 
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/tree/master/doc/app_id.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/tree/master/doc/publishing_campaign1.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/tree/master/doc/publishing_campaign2.png">
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/app_id.png"><br>
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign1.png"><br>
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign2.png">
 
 test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
@@ -152,7 +152,7 @@ window.chartboost.showRewardedVideoAd('Default');
 
 # Test #
 
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/tree/master/doc/fullscreen_ad.png">
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
 # Useful links #
 
