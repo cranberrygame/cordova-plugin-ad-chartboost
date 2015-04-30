@@ -162,12 +162,17 @@ window.chartboost.showRewardedVideoAd('Default');
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
+<<<<<<< HEAD
 Youtube
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
 CordovaApp-debug.apk
 https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/CordovaApp-debug.apk
 
+=======
+[![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
+
+>>>>>>> origin/master
 # Useful links #
 
 Cordova Admob (Ad plugin)<br>
