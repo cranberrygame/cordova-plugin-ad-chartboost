@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.cranberrygame.cordova.plugin.ad.chartboost"
-    version="1.0.3">
+    version="1.0.6">
 	
     <name>Chartboost</name>
     <description>Chartboost</description>
@@ -23,7 +23,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ChartboostPlugin" >
-                <param name="android-package" value="com.cranberrygame.cordova.plugin.ad.ChartboostPlugin"/>
+                <param name="android-package" value="com.cranberrygame.cordova.plugin.ad.chartboost.ChartboostPlugin"/>
             </feature>
         </config-file>
         
@@ -32,7 +32,7 @@
                 <uses-permission android:name="android.permission.INTERNET" />
         </config-file>
         
-        <source-file src="src/android/ChartboostPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/ad" />
+        <source-file src="src/android/ChartboostPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/ad/chartboost" />
         <source-file src="src/android/chartboost.jar" target-dir="libs" />
 
     </platform>
@@ -46,6 +46,7 @@
 			</feature>
 		</config-file>
 		
+		<header-file src="src/ios/ChartboostPlugin.h" />
 		<source-file src="src/ios/ChartboostPlugin.m" />
 		
 		<framework src="src/ios/Chartboost.framework" custom="true" />

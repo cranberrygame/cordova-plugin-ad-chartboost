@@ -1,6 +1,16 @@
 
 module.exports = {
 
+	setLicenseKey: function(email, licenseKey) {
+		var self = this;	
+        cordova.exec(
+            null,
+            null,
+            'ChartboostPlugin',
+            'setLicenseKey',			
+            [email, licenseKey]
+        ); 
+    },
 	setUp: function(appId, appSignature) {
 		var self = this;	
         cordova.exec(
@@ -12,6 +22,10 @@ module.exports = {
 						if (self.onFullScreenAdPreloaded)
 							self.onFullScreenAdPreloaded();
 					}
+					else if (result == "onFullScreenAdLoaded") {
+						if (self.onFullScreenAdLoaded)
+							self.onFullScreenAdLoaded();
+					}
 					else if (result == "onFullScreenAdShown") {
 						if (self.onFullScreenAdShown)
 							self.onFullScreenAdShown();
@@ -20,23 +34,29 @@ module.exports = {
 						 if (self.onFullScreenAdHidden)
 							self.onFullScreenAdHidden();
 					}
-					//-----------
 					else if (result == "onMoreAppsAdPreloaded") {
 						if (self.onMoreAppsAdPreloaded)
 							self.onMoreAppsAdPreloaded();
 					}
-					else if (result == "ondMoreAppsAdShown") {
-						if (self.onMoreAppsAdShown)
-							self.ondMoreAppsAdShown();
+					else if (result == "onMoreAppsAdLoaded") {
+						if (self.onMoreAppsAdLoaded)
+							self.onMoreAppsAdLoaded();
 					}
-					else if (result == "ondMoreAppsAdHidden") {
+					else if (result == "onMoreAppsAdShown") {
+						if (self.onMoreAppsAdShown)
+							self.onMoreAppsAdShown();
+					}
+					else if (result == "onMoreAppsAdHidden") {
 						 if (self.onMoreAppsAdHidden)
 							self.onMoreAppsAdHidden();
-					}
-					//-----------
+					}					
 					else if (result == "onRewardedVideoAdPreloaded") {
 						if (self.onRewardedVideoAdPreloaded)
 							self.onRewardedVideoAdPreloaded();
+					}
+					else if (result == "onRewardedVideoAdLoaded") {
+						if (self.onRewardedVideoAdLoaded)
+							self.onRewardedVideoAdLoaded();
 					}
 					else if (result == "onRewardedVideoAdShown") {
 						if (self.onRewardedVideoAdShown)
@@ -66,7 +86,7 @@ module.exports = {
             'setUp',			
 			[appId, appSignature]
         ); 
-    },   
+    },
 	preloadFullScreenAd: function(location) {
         cordova.exec(
 			null,
@@ -122,12 +142,15 @@ module.exports = {
         ); 
     },	
 	onFullScreenAdPreloaded: null,
+	onFullScreenAdLoaded: null,
 	onFullScreenAdShown: null,
 	onFullScreenAdHidden: null,	
 	onMoreAppsAdPreloaded: null,
+	onMoreAppsAdLoaded: null,
 	onMoreAppsAdShown: null,
 	onMoreAppsAdHidden: null,	
 	onRewardedVideoAdPreloaded: null,
+	onRewardedVideoAdLoaded: null,
 	onRewardedVideoAdShown: null,
 	onRewardedVideoAdHidden: null,
 	onRewardedVideoAdCompleted: null

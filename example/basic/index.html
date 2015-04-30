@@ -1,0 +1,104 @@
+<html>
+<head>
+	<script type="text/javascript" src="cordova.js"></script>
+</head>
+<body>
+
+<script>
+
+var appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
+var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+
+/*
+var appId;
+var appSignature;
+//android
+if (navigator.userAgent.match(/Android/i)) {
+	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+}
+//ios
+else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+}
+*/
+
+document.addEventListener("deviceready", function(){
+	window.chartboost.setUp(mediaId, isOverlap);
+	
+	//full screen ad callback
+	window.chartboost.onFullScreenAdPreloaded = function() {
+		alert('onFullScreenAdPreloaded');
+	};
+	window.chartboost.onFullScreenAdLoaded = function() {
+		alert('onFullScreenAdLoaded');
+	};
+	window.chartboost.onFullScreenAdShown = function() {
+		alert('onFullScreenAdShown');
+	};
+	window.chartboost.onFullScreenAdHidden = function() {
+		alert('onFullScreenAdHidden');
+	};
+	//more apps ad callback
+	window.chartboost.onMoreAppsAdPreloaded = function() {
+		alert('onMoreAppsAdPreloaded');
+	};
+	window.chartboost.onMoreAppsAdLoaded = function() {
+		alert('onMoreAppsAdLoaded');
+	};
+	window.chartboost.onMoreAppsAdShown = function() {
+		alert('onMoreAppsAdShown');
+	};
+	window.chartboost.onMoreAppsAdHidden = function() {
+		alert('onMoreAppsAdHidden');
+	};
+	//rewarded video ad callback
+	window.chartboost.onRewardedVideoAdPreloaded = function() {
+		alert('onRewardedVideoAdPreloaded');
+	};
+	window.chartboost.onRewardedVideoAdLoaded = function() {
+		alert('onRewardedVideoAdLoaded');
+	};
+	window.chartboost.onRewardedVideoAdShown = function() {
+		alert('onRewardedVideoAdShown');
+	};
+	window.chartboost.onRewardedVideoAdHidden = function() {
+		alert('onRewardedVideoAdHidden');
+	};	
+}, false);
+	
+/*
+location parameter
+
+'Default' - Supports legacy applications that only have one "Default" location
+'Startup' - Initial startup of game.
+'Home Screen' - Home screen the player first sees.
+'Main Menu' - Menu that provides game options.
+'Game Screen' - Game screen where all the magic happens.
+'Achievements' - Screen with list of achievements in the game.
+'Quests' - Quest, missions or goals screen describing things for a player to do.
+'Pause' - Pause screen.
+'Level Start' - Start of the level.
+'Level Complete' - Completion of the level
+'Turn Complete' - Finishing a turn in a game.
+'IAP Store' - The store where the player pays real money for currency or items.
+'Item Store' - The store where a player buys virtual goods.
+'Game Over' - The game over screen after a player is finished playing.
+'Leaderboard' - List of leaders in the game.
+'Settings' - Screen where player can change settings such as sound.
+'Quit' - Screen displayed right before the player exits a game.		
+*/	
+</script>
+
+<p><button onclick="window.chartboost.preloadFullScreenAd('Default');">preloadFullScreenAd</button></p>
+<p><button onclick="window.chartboost.showFullScreenAd('Default');">showFullScreenAd</button></p>
+<br>
+<p><button onclick="window.chartboost.preloadMoreAppsAd('Default');">preloadMoreAppsAd</button></p>
+<p><button onclick="window.chartboost.showMoreAppsAd('Default');">showMoreAppsAd</button></p>
+<br>
+<p><button onclick="window.chartboost.preloadRewardedVideoAd('Default');">preloadRewardedVideoAd</button></p>
+<p><button onclick="window.chartboost.showRewardedVideoAd('Default');">showRewardedVideoAd</button></p>
+
+</body>
+</html>

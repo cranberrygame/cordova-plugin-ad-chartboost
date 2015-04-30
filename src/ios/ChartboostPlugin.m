@@ -1,11 +1,6 @@
+#import "ChartboostPlugin.h"
+
 #import <Cordova/CDV.h>
-
-#import <Chartboost/Chartboost.h>
-#import <Chartboost/CBNewsfeed.h>
-#import <CommonCrypto/CommonDigest.h>
-#import <AdSupport/AdSupport.h>
-
-/*
 #import <Chartboost/Chartboost.h>
 #import <Chartboost/CBNewsfeed.h>
 #import "AppDelegate.h"
@@ -13,106 +8,189 @@
 #import <AdSupport/AdSupport.h>
 #import <Chartboost/Chartboost.h>
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
 #import <Chartboost/Chartboost.h>
 #import <Chartboost/CBNewsfeed.h>
 #import <Chartboost/CBAnalytics.h>
 #import <StoreKit/StoreKit.h>
-*/
-
-@interface ChartboostPlugin : CDVPlugin <ChartboostDelegate, CBNewsfeedDelegate>{
-	NSMutableArray* _queue;
-}
-
-@property NSString *callbackIdKeepCallback;
-
--(void) setUp:(CDVInvokedUrlCommand*)command;
--(void) preloadFullScreenAd:(CDVInvokedUrlCommand*)command;
--(void) showFullScreenAd:(CDVInvokedUrlCommand*)command;
--(void) preloadMoreAppsAd:(CDVInvokedUrlCommand*)command;
--(void) showMoreAppsAd:(CDVInvokedUrlCommand*)command;
--(void) preloadRewardedVideoAd:(CDVInvokedUrlCommand*)command;
--(void) showRewardedVideoAd:(CDVInvokedUrlCommand*)command;
-
-@end
+#import <CommonCrypto/CommonDigest.h> //md5
 
 @implementation ChartboostPlugin
 
 @synthesize callbackIdKeepCallback;
+//
+@synthesize email;
+@synthesize licenseKey_;
+static NSString *TEST_APP_ID = @"55404ffdc909a62b5e90ed69";
+static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b";
+//
+@synthesize appId;
+@synthesize appSignature;
+//
+@synthesize fullScreenAdPreload;
+@synthesize moreAppsAdPreload;
+@synthesize rewardedVideoAdPreload;
 
--(void) setUp:(CDVInvokedUrlCommand*)command {
-	NSString* appId = [command.arguments objectAtIndex:0];
-	NSString* appSignature = [command.arguments objectAtIndex:1];
-	NSString* callbackId = command.callbackId;
-	
-    NSLog(@"%@", @"setUp");
-    NSLog(@"%@", appId);
-    NSLog(@"%@", appSignature);
-	
-	callbackIdKeepCallback = callbackId;
-
-	[Chartboost startWithAppId:appId
-				appSignature:appSignature
-				delegate:self];	
+- (void) setLicenseKey: (CDVInvokedUrlCommand*)command {
+    NSString *email = [command.arguments objectAtIndex: 0];
+    NSString *licenseKey = [command.arguments objectAtIndex: 1];
+    NSLog(@"%@", email);
+    NSLog(@"%@", licenseKey);
+    
+    [self.commandDelegate runInBackground:^{
+        [self _setLicenseKey:email aLicenseKey:licenseKey];
+    }];
 }
 
-//-----------
--(void) preloadFullScreenAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
+- (void) setUp: (CDVInvokedUrlCommand*)command {
+    //self.viewController
+	//NSString *adUnit = [command.arguments objectAtIndex: 0];
+	//NSString *adUnitFullScreen = [command.arguments objectAtIndex: 1];
+	//BOOL isOverlap = [[command.arguments objectAtIndex: 2] boolValue];
+	//BOOL isTest = [[command.arguments objectAtIndex: 3] boolValue];
+	//NSLog(@"%@", adUnit);
+	//NSLog(@"%@", adUnitFullScreen);
+	//NSLog(@"%d", isOverlap);
+	//NSLog(@"%d", isTest);
+	NSString* appId = [command.arguments objectAtIndex:0];
+	NSString* appSignature = [command.arguments objectAtIndex:1];
+	//NSLog(@"%@", appId);
+	//NSLog(@"%@", appSignature);
 	
-	NSLog(@"%@", @"preloadFullScreenAd");
+    self.callbackIdKeepCallback = command.callbackId;
+	
+    [self.commandDelegate runInBackground:^{
+		[self _setUp:appId anAppSignature:appSignature];	
+    }];
+}
+
+- (void) preloadFullScreenAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
 	NSLog(@"%@", location);
+	
+    [self.commandDelegate runInBackground:^{
+		[self _preloadFullScreenAd:location];
+    }];		
+}
+
+- (void) showFullScreenAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
+	NSLog(@"%@", location);
+
+    //[self.commandDelegate runInBackground:^{
+		[self _showFullScreenAd:location];
+    //}];
+}
+
+- (void) preloadMoreAppsAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
+	NSLog(@"%@", location);
+
+    [self.commandDelegate runInBackground:^{
+		[self _preloadMoreAppsAd:location];
+    }];		
+}
+
+- (void) showMoreAppsAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
+	NSLog(@"%@", location);
+
+    //[self.commandDelegate runInBackground:^{
+		[self _showMoreAppsAd:location];
+    //}];
+}
+
+- (void) preloadRewardedVideoAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
+	NSLog(@"%@", location);
+
+   [self.commandDelegate runInBackground:^{
+		[self _preloadRewardedVideoAd:location];
+    }];
+}
+
+- (void) showRewardedVideoAd: (CDVInvokedUrlCommand*)command {
+	NSString* location = [command.arguments objectAtIndex:0];
+	NSLog(@"%@", location);
+
+    //[self.commandDelegate runInBackground:^{
+		[self _showRewardedVideoAd:location];
+    //}];
+}
+
+- (void) _setLicenseKey:(NSString *)email aLicenseKey:(NSString *)licenseKey {
+	self.email = email;
+	self.licenseKey_ = licenseKey;
+}
+
+- (void) _setUp:(NSString *)appId anAppSignature:(NSString *)appSignature {
+	NSString *str1 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.: %@", email]];
+    NSString *str2 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.ad.chartboost: %@", email]];
+	if(licenseKey_ != Nil && ([licenseKey_ isEqualToString:str1] || [licenseKey_ isEqualToString:str2])){
+		NSLog(@"valid licenseKey");
+		[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];		
+	}
+	else {
+		NSLog(@"invalid licenseKey");
+		if (arc4random() % 100 <= 1) {//0 ~ 99			
+			[Chartboost startWithAppId:TEST_APP_ID appSignature:TEST_APP_SIGNATURE delegate:self];
+		}
+		else {
+			[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
+		}
+	}
+}
+
+- (NSString*) md5:(NSString*) input {
+    const char *cStr = [input UTF8String];
+    unsigned char digest[16];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+
+-(void) _preloadFullScreenAd:(NSString *)location {
+	self.fullScreenAdPreload = YES;	
+	
 	[Chartboost cacheInterstitial:location];
 }
 
--(void) showFullScreenAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
-
-	NSLog(@"%@", @"showFullScreenAd");
-	NSLog(@"%@", location);
-    
+-(void) _showFullScreenAd:(NSString *)location {
+	self.fullScreenAdPreload = NO;	
+	
 	[Chartboost showInterstitial:location];
 }
 
-//-----------
--(void) preloadMoreAppsAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
+-(void) _preloadMoreAppsAd:(NSString *)location {
+	self.moreAppsAdPreload = YES;	
 	
-	NSLog(@"%@", @"preloadMoreAppsAd");
-    NSLog(@"%@", location);
-		
 	[Chartboost cacheMoreApps:CBLocationHomeScreen];
 }
 
--(void) showMoreAppsAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
+-(void) _showMoreAppsAd:(NSString *)location {
+	self.moreAppsAdPreload = NO;	
 	
-	NSLog(@"%@", @"showMoreAppsAd");
-	NSLog(@"%@", location);
-    
 	[Chartboost showMoreApps:location];
 }
 
-//-----------
--(void) preloadRewardedVideoAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
+-(void) _preloadRewardedVideoAd:(NSString *)location {
+	self.rewardedVideoAdPreload = YES;	
 	
-	NSLog(@"%@", @"preloadRewardedVideoAd");
-	NSLog(@"%@", location);
-    
     [Chartboost cacheRewardedVideo:location];	
 }
 
--(void) showRewardedVideoAd:(CDVInvokedUrlCommand*)command {
-	NSString* location = [command.arguments objectAtIndex:0];
+-(void) _showRewardedVideoAd:(NSString *)location {
+	self.rewardedVideoAdPreload = NO;	
 	
-	NSLog(@"%@", @"showRewardedVideoAd");
-	NSLog(@"%@", location);
-    
 	[Chartboost showRewardedVideo:location];
 }
 
 //-----------------------------------------------------
+
 //ChartboostDelegate
 
 -(BOOL) shouldRequestInterstitialsInFirstSession {
@@ -124,15 +202,24 @@
 	return YES; 
 }
 
-- (void)didCacheInterstitial:(NSString *)location {
-	NSLog(@"%@", @"onFullScreenAdPreloaded");
+- (void) didCacheInterstitial:(NSString *)location {
+	NSLog(@"%@", @"didCacheInterstitial");
+
+	if(fullScreenAdPreload) {
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdPreloaded"];
+		[pr setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+		//[pr setKeepCallbackAsBool:YES];
+		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
+	}
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdPreloaded"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdLoaded"];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
 	//[pr setKeepCallbackAsBool:YES];
-	//[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];	
+	//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 }
 
 - (void) didFailToLoadInterstitial:(NSString *)location withError:(CBLoadError)error {
@@ -171,7 +258,7 @@
 }
 
 -(BOOL) shouldDisplayInterstitial:(NSString *)location {
-    NSLog(@"about to display interstitial at location %@", location);
+    NSLog(@"shouldDisplayInterstitial %@", location);
 
     // For example:
     // if the user has left the main menu and is currently playing your game, return NO;
@@ -181,7 +268,7 @@
 }
 
 -(void) didDisplayInterstitial:(CBLocation)location{
-	NSLog(@"%@", @"onFullScreenAdShown");
+	NSLog(@"%@", @"didDisplayInterstitial");
 
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdShown"];
 	[pr setKeepCallbackAsBool:YES];
@@ -191,16 +278,16 @@
 	//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 }
 
-- (void)didFailToRecordClick:(CBLocation)location withError:(CBClickError)error {
+- (void) didFailToRecordClick:(CBLocation)location withError:(CBClickError)error {
 
 }
 
-- (void)didClickInterstitial:(CBLocation)location {
+- (void) didClickInterstitial:(CBLocation)location {
 
 }
 
-- (void)didCloseInterstitial:(CBLocation)location {
-	NSLog(@"%@", @"onFullScreenAdHidden2");
+- (void) didCloseInterstitial:(CBLocation)location {
+	NSLog(@"%@", @"didCloseInterstitial");
 }
 
 /*
@@ -214,8 +301,8 @@
  *
  */
 
-- (void)didDismissInterstitial:(NSString *)location {
-	NSLog(@"%@", @"onFullScreenAdHidden1");
+- (void) didDismissInterstitial:(NSString *)location {
+	NSLog(@"%@", @"didDismissInterstitial");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdHidden"];
 	[pr setKeepCallbackAsBool:YES];
@@ -227,10 +314,19 @@
 
 //---------------------------
 
-- (void)didCacheMoreApps:(CBLocation)location {
-	NSLog(@"%@", @"onMoreAppsAdPreloaded");
+- (void) didCacheMoreApps:(CBLocation)location {
+	NSLog(@"%@", @"didCacheMoreApps");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdPreloaded"];
+	if(moreAppsAdPreload) {
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdPreloaded"];
+		[pr setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+		//[pr setKeepCallbackAsBool:YES];
+		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
+	}
+	
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdLoaded"];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -238,7 +334,7 @@
 	//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 }
 
-- (void)didFailToLoadMoreApps:(CBLoadError)error {
+- (void) didFailToLoadMoreApps:(CBLoadError)error {
     switch(error){
         case CBLoadErrorInternetUnavailable: {
             NSLog(@"Failed to load More Apps, no Internet connection !");
@@ -270,12 +366,12 @@
     }
 }
 
-- (BOOL)shouldDisplayMoreApps:(CBLocation)location {
+- (BOOL) shouldDisplayMoreApps:(CBLocation)location {
     return YES;
 }
 
-- (void)didDisplayMoreApps:(CBLocation)location {
-	NSLog(@"%@", @"onMoreAppsAdShown");
+- (void) didDisplayMoreApps:(CBLocation)location {
+	NSLog(@"%@", @"didDisplayMoreApps");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdShown"];
 	[pr setKeepCallbackAsBool:YES];
@@ -285,11 +381,12 @@
 	//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 }
 
-- (void)didClickMoreApps:(CBLocation)location {
+- (void) didClickMoreApps:(CBLocation)location {
+	NSLog(@"%@", @"didClickMoreApps");
 }
 
-- (void)didCloseMoreApps:(CBLocation)location {
-	NSLog(@"%@", @"onMoreAppsAdHidden2");
+- (void) didCloseMoreApps:(CBLocation)location {
+	NSLog(@"%@", @"didCloseMoreApps");
 }
 
 /*
@@ -303,8 +400,8 @@
  *
  */
 
-- (void)didDismissMoreApps:(NSString *)location {
-	NSLog(@"%@", @"onMoreAppsAdHidden1");
+- (void) didDismissMoreApps:(NSString *)location {
+	NSLog(@"%@", @"didDismissMoreApps");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdHidden"];
 	[pr setKeepCallbackAsBool:YES];
@@ -323,14 +420,23 @@
  @discussion Implement to be notified of when the prefetching process has finished successfully.
  */
 
-- (void)didPrefetchVideos {
-
+- (void) didPrefetchVideos {
+	NSLog(@"%@", @"didPrefetchVideos");
 }
 
-- (void)didCacheRewardedVideo:(CBLocation)location {
-	NSLog(@"%@", @"onRewardedVideoAdPreloaded");
+- (void) didCacheRewardedVideo:(CBLocation)location {
+	NSLog(@"%@", @"didCacheRewardedVideo");
+
+	if(moreAppsAdPreload) {
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdPreloaded"];
+		[pr setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+		//[pr setKeepCallbackAsBool:YES];
+		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
+	}
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdPreloaded"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdLoaded"];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -345,7 +451,7 @@
  * the reason of the failure
  */
 
-- (void)didFailToLoadRewardedVideo:(NSString *)location withError:(CBLoadError)error {
+- (void) didFailToLoadRewardedVideo:(NSString *)location withError:(CBLoadError)error {
     switch(error){
         case CBLoadErrorInternetUnavailable: {
             NSLog(@"Failed to load Rewarded Video, no Internet connection !");
@@ -380,12 +486,12 @@
     }
 }
 
-- (BOOL)shouldDisplayRewardedVideo:(CBLocation)location {
+- (BOOL) shouldDisplayRewardedVideo:(CBLocation)location {
     return YES;
 }
 
-- (void)didDisplayRewardedVideo:(CBLocation)location {
-	NSLog(@"%@", @"onRewardedVideoAdShown");
+- (void) didDisplayRewardedVideo:(CBLocation)location {
+	NSLog(@"%@", @"didDisplayRewardedVideo");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdShown"];
 	[pr setKeepCallbackAsBool:YES];
@@ -395,16 +501,16 @@
 	//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 }
 
-- (void)didClickRewardedVideo:(CBLocation)location {
-
+- (void) didClickRewardedVideo:(CBLocation)location {
+	NSLog(@"%@", @"didClickRewardedVideo");
 }
 
-- (void)didCloseRewardedVideo:(CBLocation)location {
-
+- (void) didCloseRewardedVideo:(CBLocation)location {
+	NSLog(@"%@", @"didCloseRewardedVideo");
 }
 
-- (void)didDismissRewardedVideo:(CBLocation)location {
-	NSLog(@"%@", @"onRewardedVideoAdHidden1");
+- (void) didDismissRewardedVideo:(CBLocation)location {
+	NSLog(@"%@", @"didDismissRewardedVideo");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdHidden"];
 	[pr setKeepCallbackAsBool:YES];
@@ -423,9 +529,9 @@
  * - Rewarded video completed view
  *
  */
-- (void)didCompleteRewardedVideo:(CBLocation)location withReward:(int)reward {
+- (void) didCompleteRewardedVideo:(CBLocation)location withReward:(int)reward {
     //NSLog(@"completed rewarded video view at location %@ with reward amount %d", location, reward);
-	NSLog(@"%@", @"onRewardedVideoAdCompleted");
+	NSLog(@"%@", @"didCompleteRewardedVideo");
 	
 	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdCompleted"];
 	[pr setKeepCallbackAsBool:YES];
@@ -439,8 +545,8 @@
 
 #pragma mark - Video Delegate
 
-- (void)willDisplayVideo:(CBLocation)location {
-
+- (void) willDisplayVideo:(CBLocation)location {
+	NSLog(@"%@", @"willDisplayVideo");
 }
 
 //-----------------------------------------
@@ -457,7 +563,8 @@
  @discussion Implement to be notified of when an InPlay object has been loaded from the Chartboost API
  servers and cached locally for a given CBLocation.
  */
-- (void)didCacheInPlay:(CBLocation)location {
+- (void) didCacheInPlay:(CBLocation)location {
+	NSLog(@"%@", @"didCacheInPlay");
 }
 
 /*!
@@ -472,8 +579,8 @@
  @discussion Implement to be notified of when an InPlay has attempted to load from the Chartboost API
  servers but failed for a given CBLocation.
  */
-- (void)didFailToLoadInPlay:(CBLocation)location
-                  withError:(CBLoadError)error{
+- (void) didFailToLoadInPlay:(CBLocation)location withError:(CBLoadError)error{
+	NSLog(@"%@", @"didFailToLoadInPlay");
 }
 				  
 //-----------------------------------------
@@ -486,7 +593,8 @@
  
  @discussion Implement to be notified of when the App Store sheet is dismissed.
  */
-- (void)didCompleteAppStoreSheetFlow {
+- (void) didCompleteAppStoreSheetFlow {
+	NSLog(@"%@", @"didCompleteAppStoreSheetFlow");
 }
 
 /*!
@@ -496,7 +604,8 @@
  @discussion Use this method to display any gating you would like to prompt the user for input.
  Once confirmed call didPassAgeGate:(BOOL)pass to continue execution.
  */
-- (void)didPauseClickForConfirmation {
+- (void) didPauseClickForConfirmation {
+	NSLog(@"%@", @"didPauseClickForConfirmation");
 }
 
 @end
