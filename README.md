@@ -5,6 +5,9 @@ show chartboost full screen, more apps, rewarded video ad
 
 requires revmob account https://www.revmobmobileadnetwork.com
 
+Chartboost android SDK 5.2.0 (Apr. 6, 2015)
+Chartboost ios SDK 5.2.1 (Apr. 13, 2015)
+
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
 
