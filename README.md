@@ -38,7 +38,7 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 
 ## Construct2 ##
 
-Download construct2 chartist plugin
+Download construct2 chartboost plugin and example
 https://plus.google.com/communities/117978754675005605917 
 
 # Server setting #
