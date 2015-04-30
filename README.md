@@ -1,5 +1,5 @@
 # Overview #
-show chartboost full screen, more apps, rewarded video ad
+show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
 
 [android, ios] [crosswalk] [cordova cli]
 
@@ -51,7 +51,8 @@ https://plus.google.com/communities/117978754675005605917
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/app_id.png"><br>
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign1.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign2.png">
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign2.png"><br>
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign3.png">
 
 test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
@@ -142,12 +143,15 @@ location parameter
 'Quit' - Screen displayed right before the player exits a game.		
 */	
 
+//static interstitial, video interstial
 window.chartboost.preloadFullScreenAd('Default');
 window.chartboost.showFullScreenAd('Default');
 
+//more apps
 window.chartboost.preloadMoreAppsAd('Default');
 window.chartboost.showMoreAppsAd('Default');
 
+//rewarded video
 window.chartboost.preloadRewardedVideoAd('Default');
 window.chartboost.showRewardedVideoAd('Default');
 ```
@@ -158,20 +162,25 @@ window.chartboost.showRewardedVideoAd('Default');
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
+Youtube
+[![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
+
+CordovaApp-debug.apk
+https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/CordovaApp-debug.apk
+
 # Useful links #
 
 Cordova Admob (Ad plugin)<br>
 http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.admob<br>
 https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.admob<br>
-<br>
-<br>
+https://www.youtube.com/watch?v=xXrVb8E8gMM<br>
 Cordova Chartboost (Ad plugin)<br>
 http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.chartboost<br>
 https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost<br>
-<br>
-<br>
+https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be<br>
 Cordova RevMob (Ad plugin)<br>
 http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.revmob<br>
 https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.revmob<br>
+https://www.youtube.com/watch?v=fThTXn88dNw<br>
 
 # Credits #

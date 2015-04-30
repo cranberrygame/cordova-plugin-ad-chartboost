@@ -2,13 +2,13 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.cranberrygame.cordova.plugin.ad.chartboost"
-    version="1.0.6">
+    version="1.0.7">
 	
     <name>Chartboost</name>
     <description>Chartboost</description>
     <author>Sang Ki Kwon (Cranberrygame)</author>	
     <license>MIT</license>
-    <keywords>cordova, chartboost</keywords>
+    <keywords>cordova,chartboost</keywords>
     <repo>https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost</repo>
     <issue>https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/issues</issue>	
 	<engines>
