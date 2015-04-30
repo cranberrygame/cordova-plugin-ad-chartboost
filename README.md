@@ -158,8 +158,6 @@ window.chartboost.showRewardedVideoAd('Default');
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
-[![video](https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png)](https://youtu.be/EQJLRbSKmPU)
-
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU "Youtube")
 
 # Useful links #
