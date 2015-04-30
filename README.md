@@ -162,17 +162,17 @@ window.chartboost.showRewardedVideoAd('Default');
 
 # Useful links #
 
-Cordova Admob (Ad plugin)
-http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.admob
-https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.admob
-https://www.youtube.com/watch?v=xXrVb8E8gMM
-Cordova Chartboost (Ad plugin)
-http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.chartboost
-https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost
-https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be
-Cordova RevMob (Ad plugin)
-http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.revmob
-https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.revmob
-https://www.youtube.com/watch?v=fThTXn88dNw
+Cordova Admob (Ad plugin)<br>
+http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.admob<br>
+https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.admob<br>
+https://www.youtube.com/watch?v=xXrVb8E8gMM<br>
+Cordova Chartboost (Ad plugin)<br>
+http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.chartboost<br>
+https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost<br>
+https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be<br>
+Cordova RevMob (Ad plugin)<br>
+http://plugins.cordova.io/#/package/com.cranberrygame.cordova.plugin.ad.revmob<br>
+https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.revmob<br>
+https://www.youtube.com/watch?v=fThTXn88dNw<br>
 
 # Credits #
