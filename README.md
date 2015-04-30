@@ -158,6 +158,8 @@ window.chartboost.showRewardedVideoAd('Default');
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
+https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be
+
 # Useful links #
 
 Cordova Admob (Ad plugin)<br>
