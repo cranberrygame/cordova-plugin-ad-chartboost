@@ -1,7 +1,7 @@
 /*
  * CBNewsfeed.h
  * Chartboost
- * 5.2.1
+ * 5.1.5
  *
  * Copyright 2011 Chartboost. All rights reserved.
  */
