@@ -54,7 +54,8 @@ https://plus.google.com/communities/117978754675005605917
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/app_id.png"><br>
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign1.png"><br>
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign2.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign3.png">
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign3.png"><br>
+<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign4.png">
 
 test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
@@ -172,17 +173,10 @@ https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/
 
 # Useful links #
 
-<<<<<<< HEAD
 Cordova monetisation-related plugins G+ community<br>
 https://plus.google.com/communities/116032133386884708413<br>
 <br>
 Construct2 monetisation-related plugins by cordova G+ community<br>
-=======
-Cordova monetisation related plugins G+ community<br>
-https://plus.google.com/communities/116032133386884708413<br>
-<br>
-Construct2 monetisation related plugins by cordova G+ community<br>
->>>>>>> origin/master
 https://plus.google.com/communities/117978754675005605917<br>
 
 # Credits #
