@@ -16,7 +16,7 @@ this is open source cordova plugin.
 you can download the following app and get free license.
 https://play.google.com/store/apps/details?id=com.cranberrygame.cordovapluginfreelicense
 put the following function call before setUp function call in the javascript source code 
-window.admob.setLicenseKey("youremailid@youremaildoamin.com", "yourFreeLicenseKey");
+window.chartboost.setLicenseKey("youremailid@youremaildoamin.com", "yourFreeLicenseKey");
 if you do not call this function, then you share 2% traffic with this plugin developer for supporting plugin development.
 
 # Change log #
