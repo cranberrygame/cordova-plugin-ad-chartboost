@@ -13,10 +13,11 @@ https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-i
 
 this is open source cordova plugin.
 
-you can get free license from following app.
-https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.admob/blob/master/doc/cordovapluginfreelicense/CordovaApp-debug.apk
-put window.chartboost.setLicenseKey("youremail@yourdoamin.com", "yourlicensekey"); function call before setUp function call.
-if you do not call this function, this plugin will share 2% traffic with plugin developer for supporting plugin development.
+you can download the following app and get free license.
+https://play.google.com/store/apps/details?id=com.cranberrygame.cordovapluginfreelicense
+put the following function call before setUp function call in the javascript source code 
+window.admob.setLicenseKey("youremailid@youremaildoamin.com", "yourFreeLicenseKey");
+if you do not call this function, then you share 2% traffic with this plugin developer for supporting plugin development.
 
 # Change log #
 ```c
@@ -41,11 +42,6 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 ```c
 <gap:plugin name="com.cranberrygame.cordova.plugin.ad.chartboost" source="plugins.cordova.io" />
 ```
-
-## Construct2 ##
-
-Download construct2 chartboost plugin and example
-https://plus.google.com/communities/117978754675005605917 
 
 # Server setting #
 ```c
@@ -165,18 +161,17 @@ window.chartboost.showRewardedVideoAd('Default');
 
 <img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
 
-Youtube
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
-CordovaApp-debug.apk
+You can also run following test apk.
 https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/CordovaApp-debug.apk
 
 # Useful links #
 
-Cordova monetisation-related plugins G+ community<br>
+Cordova promotion & monetisation plugins G+ community<br>
 https://plus.google.com/communities/116032133386884708413<br>
 <br>
-Construct2 monetisation-related plugins by cordova G+ community<br>
+C2 promotion & monetisation plugins by cordova G+ community<br>
 https://plus.google.com/communities/117978754675005605917<br>
 
 # Credits #
