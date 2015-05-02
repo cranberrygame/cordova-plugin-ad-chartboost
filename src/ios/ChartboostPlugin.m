@@ -20,8 +20,6 @@
 //
 @synthesize email;
 @synthesize licenseKey_;
-static NSString *TEST_APP_ID = @"55404ffdc909a62b5e90ed69";
-static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b";
 //
 @synthesize appId;
 @synthesize appSignature;
@@ -58,9 +56,9 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	
     self.callbackIdKeepCallback = command.callbackId;
 	
-    [self.commandDelegate runInBackground:^{
+    //[self.commandDelegate runInBackground:^{
 		[self _setUp:appId anAppSignature:appSignature];	
-    }];
+    //}];
 }
 
 - (void) preloadFullScreenAd: (CDVInvokedUrlCommand*)command {
@@ -123,21 +121,27 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 }
 
 - (void) _setUp:(NSString *)appId anAppSignature:(NSString *)appSignature {
+	//
 	NSString *str1 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.: %@", email]];
-    NSString *str2 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.ad.chartboost: %@", email]];
+	NSString *str2 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.ad.chartboost: %@", email]];
 	if(licenseKey_ != Nil && ([licenseKey_ isEqualToString:str1] || [licenseKey_ isEqualToString:str2])){
 		NSLog(@"valid licenseKey");
-		[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];		
 	}
 	else {
 		NSLog(@"invalid licenseKey");
-		if (arc4random() % 100 <= 1) {//0 ~ 99			
-			[Chartboost startWithAppId:TEST_APP_ID appSignature:TEST_APP_SIGNATURE delegate:self];
-		}
-		else {
-			[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
-		}
+
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" 
+                                                message:@"Cordova Chartboost: invalid email / license key." 
+                                               delegate:nil 
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+		[alert show];
+		
+		return;
 	}
+	
+	//
+	[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
 }
 
 - (NSString*) md5:(NSString*) input {

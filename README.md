@@ -13,12 +13,6 @@ https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-i
 
 this is open source cordova plugin.
 
-you can download the following app and get free license.
-https://play.google.com/store/apps/details?id=com.cranberrygame.cordovapluginfreelicense
-put the following function call before setUp function call in the javascript source code 
-window.chartboost.setLicenseKey("youremailid@youremaildoamin.com", "yourFreeLicenseKey");
-if you do not call this function, then you share 2% traffic with this plugin developer for supporting plugin development.
-
 # Change log #
 ```c
 ```
@@ -77,6 +71,9 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 */
 
 document.addEventListener("deviceready", function(){
+	//get free license from https://play.google.com/store/apps/details?id=com.cranberrygame.cordovapluginfreelicense
+	window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
+
 	window.chartboost.setUp(mediaId, isOverlap);
 	
 	//full screen ad callback
