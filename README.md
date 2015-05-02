@@ -11,6 +11,8 @@ Chartboost ios SDK 5.1.5 (Mar. 17, 2015)
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
 
+need to set license, get free license from https://play.google.com/store/apps/details?id=com.cranberrygame.cordovapluginfreelicense
+
 this is open source cordova plugin.
 
 # Change log #
