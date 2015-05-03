@@ -131,7 +131,7 @@
 		NSLog(@"invalid licenseKey");
 
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" 
-                                                message:@"Cordova Chartboost: invalid email / license key." 
+                                                message:@"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io" 
                                                delegate:nil 
                                       cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];

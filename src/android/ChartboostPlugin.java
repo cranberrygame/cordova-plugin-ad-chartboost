@@ -279,7 +279,7 @@ public class ChartboostPlugin extends CordovaPlugin{
 		else {
 			Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
 			
-			Util.alert(cordova.getActivity(),"Cordova Chartboost: invalid email / license key.");			
+			Util.alert(cordova.getActivity(),"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io");			
 			
 			return;
 		}
