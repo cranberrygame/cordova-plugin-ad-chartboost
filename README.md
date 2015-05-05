@@ -1,7 +1,9 @@
+Cordova Chartboost plugin (Free)
+====================
 # Overview #
 show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
 
-[android, ios] [crosswalk] [cordova cli]
+[android, ios] [cordova cli] [xdk]
 
 requires revmob account https://www.revmobmobileadnetwork.com
 
@@ -11,9 +13,9 @@ Chartboost ios SDK 5.1.5 (Mar. 17, 2015)
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
 
-need to set license, get free license from http://cranberrygame.github.io
-
 this is open source cordova plugin.
+
+need to set license, get free license from http://cranberrygame.github.io?referrer=github
 
 # Change log #
 ```c
@@ -25,7 +27,7 @@ this is open source cordova plugin.
 cordova plugin add com.cranberrygame.cordova.plugin.ad.chartboost
 ```
 
-## Crosswalk ##
+## Xdk ##
 ```c
 XDK PORJECTS - your_xdk_project - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS AND PERMISSIONS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 
@@ -73,7 +75,7 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 */
 
 document.addEventListener("deviceready", function(){
-	//need to set license, get free license from http://cranberrygame.github.io
+	//need to set license, get free license from http://cranberrygame.github.io?referrer=github
 	window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
 
 	window.chartboost.setUp(mediaId, isOverlap);
@@ -163,11 +165,11 @@ window.chartboost.showRewardedVideoAd('Default');
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
 You can also run following test apk.
-https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/CordovaApp-debug.apk
+https://dl.dropboxusercontent.com/u/186681453/free/chartboost/CordovaApp-debug.apk
 
 # Useful links #
 
 Cordova promotion & monetisation plugins<br>
-http://cranberrygame.github.io
+http://cranberrygame.github.io?referrer=github
 
 # Credits #

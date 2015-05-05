@@ -2,13 +2,13 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.cranberrygame.cordova.plugin.ad.chartboost"
-    version="1.0.14">
+    version="1.0.16">
 	
-    <name>Chartboost</name>
-    <description>Chartboost</description>
+    <name>Cordova Chartboost plugin (Free)</name>
+    <description>show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad</description>
     <author>Sang Ki Kwon (Cranberrygame)</author>	
     <license>MIT</license>
-    <keywords>cordova,chartboost</keywords>
+    <keywords>cordova,chartboost,free,monetisation</keywords>
     <repo>https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost</repo>
     <issue>https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/issues</issue>	
 	<engines>
