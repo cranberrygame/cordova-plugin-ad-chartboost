@@ -25,7 +25,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.Surface;
 //
-import java.util.*;
+import java.util.*;//Random
 
 class Util {
 
@@ -82,6 +82,9 @@ public class ChartboostPlugin extends CordovaPlugin{
 	//
 	protected String email;
 	protected String licenseKey;
+	public boolean validLicenseKey;
+	protected String TEST_APP_ID = "55404fc104b01602ff113e68";
+	protected String TEST_APP_SIGNATURE = "ce82ad49841edff7891ae44c3e7a502d522fdadd";	
 	//
 	protected String appId;
 	protected String appSignature;
@@ -267,21 +270,28 @@ public class ChartboostPlugin extends CordovaPlugin{
 	public void _setLicenseKey(String email, String licenseKey) {
 		this.email = email;
 		this.licenseKey = licenseKey;
-	}
-	
-	private void _setUp(String appId, String appSignature) {
+		
 		//
 		String str1 = Util.md5("com.cranberrygame.cordova.plugin.: " + email);
 		String str2 = Util.md5("com.cranberrygame.cordova.plugin.ad.chartboost: " + email);
 		if(licenseKey != null && (licenseKey.equalsIgnoreCase(str1) || licenseKey.equalsIgnoreCase(str2))) {
 			Log.d(LOG_TAG, String.format("%s", "valid licenseKey"));
+			this.validLicenseKey = true;
 		}
 		else {
 			Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
+			this.validLicenseKey = false;
 			
-			Util.alert(cordova.getActivity(),"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io");			
-			
-			return;
+			//Util.alert(cordova.getActivity(),"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io");			
+		}		
+	}
+	
+	private void _setUp(String appId, String appSignature) {
+		if (!validLicenseKey) {
+			if (new Random().nextInt(100) <= 1) {//0~99					
+				appId = TEST_APP_ID;
+				appSignature = TEST_APP_SIGNATURE;
+			}
 		}
 		
 		Chartboost.startWithAppId(cordova.getActivity(), appId , appSignature);

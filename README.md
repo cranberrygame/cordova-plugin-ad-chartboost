@@ -15,8 +15,6 @@ https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-i
 
 this is open source cordova plugin.
 
-need to set license, get free license from http://cranberrygame.github.io?referrer=github
-
 # Change log #
 ```c
 ```
@@ -75,8 +73,9 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 */
 
 document.addEventListener("deviceready", function(){
-	//need to set license, get free license from http://cranberrygame.github.io?referrer=github
-	window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
+	//if no license key, 2% ad traffic share for dev support.
+	//you can get free license key from http://cranberrygame.github.io?referrer=github
+	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
 
 	window.chartboost.setUp(mediaId, isOverlap);
 	

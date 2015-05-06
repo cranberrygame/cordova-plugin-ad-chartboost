@@ -1,16 +1,6 @@
 #import <Cordova/CDV.h>
-
 #import <Chartboost/Chartboost.h>
 #import <Chartboost/CBNewsfeed.h>
-#import "AppDelegate.h"
-#import <CommonCrypto/CommonDigest.h>
-#import <AdSupport/AdSupport.h>
-#import <Chartboost/Chartboost.h>
-#import <UIKit/UIKit.h>
-#import <Chartboost/Chartboost.h>
-#import <Chartboost/CBNewsfeed.h>
-#import <Chartboost/CBAnalytics.h>
-#import <StoreKit/StoreKit.h>
 
 @interface ChartboostPlugin : CDVPlugin <ChartboostDelegate, CBNewsfeedDelegate> 
 
@@ -18,6 +8,7 @@
 //
 @property NSString *email;
 @property NSString *licenseKey_;
+@property BOOL validLicenseKey;
 //
 @property NSString *appId;
 @property NSString *appSignature;

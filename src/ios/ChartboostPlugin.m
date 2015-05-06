@@ -1,17 +1,4 @@
 #import "ChartboostPlugin.h"
-
-#import <Cordova/CDV.h>
-#import <Chartboost/Chartboost.h>
-#import <Chartboost/CBNewsfeed.h>
-#import "AppDelegate.h"
-#import <CommonCrypto/CommonDigest.h>
-#import <AdSupport/AdSupport.h>
-#import <Chartboost/Chartboost.h>
-#import <UIKit/UIKit.h>
-#import <Chartboost/Chartboost.h>
-#import <Chartboost/CBNewsfeed.h>
-#import <Chartboost/CBAnalytics.h>
-#import <StoreKit/StoreKit.h>
 #import <CommonCrypto/CommonDigest.h> //md5
 
 @implementation ChartboostPlugin
@@ -20,6 +7,9 @@
 //
 @synthesize email;
 @synthesize licenseKey_;
+@synthesize validLicenseKey;
+static NSString *TEST_APP_ID = @"55404ffdc909a62b5e90ed69";
+static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b";
 //
 @synthesize appId;
 @synthesize appSignature;
@@ -118,30 +108,21 @@
 - (void) _setLicenseKey:(NSString *)email aLicenseKey:(NSString *)licenseKey {
 	self.email = email;
 	self.licenseKey_ = licenseKey;
-}
-
-- (void) _setUp:(NSString *)appId anAppSignature:(NSString *)appSignature {
+	
 	//
 	NSString *str1 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.: %@", email]];
 	NSString *str2 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.ad.chartboost: %@", email]];
 	if(licenseKey_ != Nil && ([licenseKey_ isEqualToString:str1] || [licenseKey_ isEqualToString:str2])){
 		NSLog(@"valid licenseKey");
+		validLicenseKey = YES;		
 	}
 	else {
 		NSLog(@"invalid licenseKey");
-
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" 
-                                                message:@"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io" 
-                                               delegate:nil 
-                                      cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil];
-		[alert show];
+		validLicenseKey = NO;
 		
-		return;
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
 	}
-	
-	//
-	[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
 }
 
 - (NSString*) md5:(NSString*) input {
@@ -155,6 +136,18 @@
         [output appendFormat:@"%02x", digest[i]];
     
     return  output;
+}
+
+- (void) _setUp:(NSString *)appId anAppSignature:(NSString *)appSignature {
+	if (!validLicenseKey) {
+		if (arc4random() % 100 <= 1) {//0 ~ 99		
+			appId = TEST_APP_ID;
+			appSignature = TEST_APP_SIGNATURE;
+		}
+	}
+	
+	//
+	[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
 }
 
 -(void) _preloadFullScreenAd:(NSString *)location {
