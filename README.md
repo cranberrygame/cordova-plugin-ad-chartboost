@@ -1,4 +1,4 @@
-Cordova Chartboost plugin (Free)
+Cordova Chartboost plugin
 ====================
 # Overview #
 show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
@@ -74,7 +74,7 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 
 document.addEventListener("deviceready", function(){
 	//if no license key, 2% ad traffic share for dev support.
-	//you can get free license key from http://cranberrygame.github.io?referrer=github
+	//you can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova
 	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
 
 	window.chartboost.setUp(mediaId, isOverlap);
