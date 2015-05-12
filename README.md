@@ -43,11 +43,11 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 ```c
 ```
 
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/app_id.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign1.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign2.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign3.png"><br>
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/publishing_campaign4.png">
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/app_id.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign1.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign2.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign3.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign4.png">
 
 test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
@@ -155,11 +155,11 @@ window.chartboost.preloadRewardedVideoAd('Default');
 window.chartboost.showRewardedVideoAd('Default');
 ```
 # Examples #
-<a href="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/example/basic/index.html">example/basic/index.html</a><br>
+<a href="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/example/basic/index.html">example/basic/index.html</a><br>
 
 # Test #
 
-<img src="https://github.com/cranberrygame/com.cranberrygame.cordova.plugin.ad.chartboost/blob/master/doc/fullscreen_ad.png">
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/fullscreen_ad.png">
 
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
@@ -168,7 +168,7 @@ https://dl.dropboxusercontent.com/u/186681453/free/chartboost/CordovaApp-debug.a
 
 # Useful links #
 
-Cordova promotion & monetisation plugins<br>
+Plugin For Cordova<br>
 http://cranberrygame.github.io?referrer=github
 
 # Credits #
