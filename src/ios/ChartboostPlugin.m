@@ -154,7 +154,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	}
 	
 	//
-	[Chartboost startWithAppId:self.appId anAppSignature:self.appSignature delegate:self];
+	[Chartboost startWithAppId:self.appId appSignature:self.appSignature delegate:self];
 }
 
 -(void) _preloadFullScreenAd:(NSString *)location {
