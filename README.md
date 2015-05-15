@@ -39,6 +39,9 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 <gap:plugin name="com.cranberrygame.cordova.plugin.ad.chartboost" source="plugins.cordova.io" />
 ```
 
+## Construct2 ##
+Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/construct2.html
+
 # Server setting #
 ```c
 ```
@@ -153,6 +156,12 @@ window.chartboost.showMoreAppsAd('Default');
 //rewarded video
 window.chartboost.preloadRewardedVideoAd('Default');
 window.chartboost.showRewardedVideoAd('Default');
+
+alert(window.chartboost.isShowingFullScreenAd());//boolean: true or false
+
+alert(window.chartboost.isShowingMoreAppsAd());//boolean: true or false
+
+alert(window.chartboost.isShowingRewardedVideoAd());//boolean: true or false
 ```
 # Examples #
 <a href="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/example/basic/index.html">example/basic/index.html</a><br>
@@ -168,7 +177,7 @@ https://dl.dropboxusercontent.com/u/186681453/free/chartboost/CordovaApp-debug.a
 
 # Useful links #
 
-Plugin For Cordova<br>
+Plugins For Cordova<br>
 http://cranberrygame.github.io?referrer=github
 
 # Credits #

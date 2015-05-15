@@ -1,6 +1,9 @@
 
 module.exports = {
-
+	_isShowingFullScreenAd: false,
+	_isShowingMoreAppsAd: false,
+	_isShowingRewardedVideoAd: false,
+	//
 	setLicenseKey: function(email, licenseKey) {
 		var self = this;	
         cordova.exec(
@@ -27,10 +30,14 @@ module.exports = {
 							self.onFullScreenAdLoaded();
 					}
 					else if (result == "onFullScreenAdShown") {
+						self._isShowingFullScreenAd = true;
+					
 						if (self.onFullScreenAdShown)
 							self.onFullScreenAdShown();
 					}
 					else if (result == "onFullScreenAdHidden") {
+						self._isShowingFullScreenAd = false;
+					
 						 if (self.onFullScreenAdHidden)
 							self.onFullScreenAdHidden();
 					}
@@ -43,10 +50,14 @@ module.exports = {
 							self.onMoreAppsAdLoaded();
 					}
 					else if (result == "onMoreAppsAdShown") {
+						self._isShowingMoreAppsAd = true;
+					
 						if (self.onMoreAppsAdShown)
 							self.onMoreAppsAdShown();
 					}
 					else if (result == "onMoreAppsAdHidden") {
+						self._isShowingMoreAppsAd = false;
+					
 						 if (self.onMoreAppsAdHidden)
 							self.onMoreAppsAdHidden();
 					}					
@@ -59,10 +70,14 @@ module.exports = {
 							self.onRewardedVideoAdLoaded();
 					}
 					else if (result == "onRewardedVideoAdShown") {
+						self._isShowingRewardedVideoAd = true;
+					
 						if (self.onRewardedVideoAdShown)
 							self.onRewardedVideoAdShown();
 					}
 					else if (result == "onRewardedVideoAdHidden") {
+						self._isShowingRewardedVideoAd = false;
+					
 						 if (self.onRewardedVideoAdHidden)
 							self.onRewardedVideoAdHidden();
 					}
@@ -140,7 +155,16 @@ module.exports = {
             'showRewardedVideoAd',
             [location]
         ); 
-    },	
+    },
+	isShowingFullScreenAd: function() {
+		return this._isShowingFullScreenAd;
+	},
+	isShowingMoreAppsAd: function() {
+		return this._isShowingMoreAppsAd;
+	},
+	isShowingRewardedVideoAd: function() {
+		return this._isShowingRewardedVideoAd;
+	},	
 	onFullScreenAdPreloaded: null,
 	onFullScreenAdLoaded: null,
 	onFullScreenAdShown: null,

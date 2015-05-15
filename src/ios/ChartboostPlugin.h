@@ -1,3 +1,7 @@
+//Copyright (c) 2014 Sang Ki Kwon (Cranberrygame)
+//Email: cranberrygame@yahoo.com
+//Homepage: http://cranberrygame.github.io
+//License: MIT (http://opensource.org/licenses/MIT)
 #import <Cordova/CDV.h>
 #import <Chartboost/Chartboost.h>
 #import <Chartboost/CBNewsfeed.h>

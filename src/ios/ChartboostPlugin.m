@@ -1,3 +1,7 @@
+//Copyright (c) 2014 Sang Ki Kwon (Cranberrygame)
+//Email: cranberrygame@yahoo.com
+//Homepage: http://cranberrygame.github.io
+//License: MIT (http://opensource.org/licenses/MIT)
 #import "ChartboostPlugin.h"
 #import <CommonCrypto/CommonDigest.h> //md5
 
@@ -41,8 +45,8 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	//NSLog(@"%d", isTest);
 	NSString* appId = [command.arguments objectAtIndex:0];
 	NSString* appSignature = [command.arguments objectAtIndex:1];
-	//NSLog(@"%@", appId);
-	//NSLog(@"%@", appSignature);
+	NSLog(@"%@", appId);
+	NSLog(@"%@", appSignature);
 	
     self.callbackIdKeepCallback = command.callbackId;
 	
@@ -120,7 +124,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 		NSLog(@"invalid licenseKey");
 		validLicenseKey = NO;
 		
-		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Cordova Chartboost: invalid email / license key. get free license from http://cranberrygame.github.io" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Cordova Chartboost: invalid email / license key. You can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		//[alert show];
 	}
 }
@@ -139,15 +143,18 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 }
 
 - (void) _setUp:(NSString *)appId anAppSignature:(NSString *)appSignature {
+	self.appId = appId;
+	self.appSignature = appSignature;
+
 	if (!validLicenseKey) {
 		if (arc4random() % 100 <= 1) {//0 ~ 99		
-			appId = TEST_APP_ID;
-			appSignature = TEST_APP_SIGNATURE;
+			self.appId = TEST_APP_ID;
+			self.appSignature = TEST_APP_SIGNATURE;
 		}
 	}
 	
 	//
-	[Chartboost startWithAppId:appId appSignature:appSignature delegate:self];
+	[Chartboost startWithAppId:self.appId anAppSignature:self.appSignature delegate:self];
 }
 
 -(void) _preloadFullScreenAd:(NSString *)location {
