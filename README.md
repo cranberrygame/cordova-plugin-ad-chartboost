@@ -1,11 +1,11 @@
 Cordova Chartboost plugin
 ====================
 # Overview #
-show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
+Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
 
 [android, ios] [cordova cli] [xdk]
 
-requires revmob account https://www.revmobmobileadnetwork.com
+Requires revmob account https://www.revmobmobileadnetwork.com
 
 Chartboost android SDK 5.2.0 (Apr. 6, 2015)
 Chartboost ios SDK 5.1.5 (Mar. 17, 2015)
@@ -13,7 +13,9 @@ Chartboost ios SDK 5.1.5 (Mar. 17, 2015)
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
 
-this is open source cordova plugin.
+This is open source cordova plugin.
+
+You can see Plugins For Cordova in one page: http://cranberrygame.github.io?referrer=github
 
 # Change log #
 ```c
@@ -22,7 +24,7 @@ this is open source cordova plugin.
 
 ## Cordova cli ##
 ```c
-cordova plugin add com.cranberrygame.cordova.plugin.ad.chartboost
+cordova plugin add com.cranberrygame.cordova.plugin.ad.video.chartboost
 ```
 
 ## Xdk ##
@@ -30,13 +32,13 @@ cordova plugin add com.cranberrygame.cordova.plugin.ad.chartboost
 XDK PORJECTS - your_xdk_project - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS AND PERMISSIONS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 
 Name: revmob
-Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
+Plugin ID: com.cranberrygame.cordova.plugin.ad.video.chartboost
 [v] Plugin is located in the Apache Cordova Plugins Registry
 ```
 
 ## Phonegap build service (config.xml) ##
 ```c
-<gap:plugin name="com.cranberrygame.cordova.plugin.ad.chartboost" source="plugins.cordova.io" />
+<gap:plugin name="com.cranberrygame.cordova.plugin.ad.video.chartboost" source="plugins.cordova.io" />
 ```
 
 ## Construct2 ##
@@ -46,13 +48,13 @@ Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/plugin
 ```c
 ```
 
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/app_id.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign1.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign2.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign3.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign4.png">
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/app_id.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/publishing_campaign1.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/publishing_campaign2.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/publishing_campaign3.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/publishing_campaign4.png">
 
-test mode setting: 
+Test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
 
 # API #
@@ -121,6 +123,9 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.onRewardedVideoAdHidden = function() {
 		alert('onRewardedVideoAdHidden');
 	};	
+	window.chartboost.onRewardedVideoAdCompleted = function() {
+		alert('onRewardedVideoAdCompleted');
+	};	
 }, false);
 
 /*
@@ -168,12 +173,12 @@ alert(window.chartboost.isShowingRewardedVideoAd());//boolean: true or false
 
 # Test #
 
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/fullscreen_ad.png">
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-video-chartboost/blob/master/doc/fullscreen_ad.png">
 
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
 You can also run following test apk.
-https://dl.dropboxusercontent.com/u/186681453/free/chartboost/CordovaApp-debug.apk
+https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/CordovaApp-debug.apk
 
 # Useful links #
 
