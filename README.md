@@ -125,7 +125,7 @@ document.addEventListener("deviceready", function(){
 	};	
 	window.chartboost.onRewardedVideoAdCompleted = function() {
 		alert('onRewardedVideoAdCompleted');
-	};	
+	};
 }, false);
 
 /*
@@ -178,7 +178,7 @@ alert(window.chartboost.isShowingRewardedVideoAd());//boolean: true or false
 [![](http://img.youtube.com/vi/EQJLRbSKmPU/0.jpg)](https://www.youtube.com/watch?v=EQJLRbSKmPU&feature=youtu.be "Youtube")
 
 You can also run following test apk.
-https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/CordovaApp-debug.apk
+https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/apk.html
 
 # Useful links #
 

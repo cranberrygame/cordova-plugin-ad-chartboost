@@ -102,6 +102,24 @@ public class ChartboostPlugin extends CordovaPlugin{
     }
 	
 	@Override
+	public void onPause(boolean multitasking) {
+		super.onPause(multitasking);
+		Chartboost.onPause(cordova.getActivity());
+	}
+	
+	@Override
+	public void onResume(boolean multitasking) {
+		super.onResume(multitasking);
+		Chartboost.onResume(cordova.getActivity());
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		Chartboost.onDestroy(cordova.getActivity());
+	}
+	
+	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
 		if (action.equals("setLicenseKey")) {
@@ -278,7 +296,8 @@ public class ChartboostPlugin extends CordovaPlugin{
 		//
 		String str1 = Util.md5("com.cranberrygame.cordova.plugin.: " + email);
 		String str2 = Util.md5("com.cranberrygame.cordova.plugin.ad.chartboost: " + email);
-		if(licenseKey != null && (licenseKey.equalsIgnoreCase(str1) || licenseKey.equalsIgnoreCase(str2))) {
+		String str3 = Util.md5("com.cranberrygame.cordova.plugin.ad.video.chartboost: " + email);
+		if(licenseKey != null && (licenseKey.equalsIgnoreCase(str1) || licenseKey.equalsIgnoreCase(str2) || licenseKey.equalsIgnoreCase(str3))) {
 			Log.d(LOG_TAG, String.format("%s", "valid licenseKey"));
 			this.validLicenseKey = true;
 		}
@@ -344,25 +363,7 @@ public class ChartboostPlugin extends CordovaPlugin{
 		Chartboost.showRewardedVideo(location);	
 	}
 	
-	@Override
-	public void onPause(boolean multitasking) {
-		super.onPause(multitasking);
-		Chartboost.onPause(cordova.getActivity());
-	}
-	
-	@Override
-	public void onResume(boolean multitasking) {
-		super.onResume(multitasking);
-		Chartboost.onResume(cordova.getActivity());
-	}
-	
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		Chartboost.onDestroy(cordova.getActivity());
-	}
-	
-	class MyChartboostDelegate extends ChartboostDelegate{
+	class MyChartboostDelegate extends ChartboostDelegate {
 	
 		@Override
 		public boolean shouldRequestInterstitial(String location) {
