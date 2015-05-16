@@ -2,7 +2,7 @@
 //Email: cranberrygame@yahoo.com
 //Homepage: http://cranberrygame.github.io
 //License: MIT (http://opensource.org/licenses/MIT)
-package com.cranberrygame.cordova.plugin.ad.chartboost;
+package com.cranberrygame.cordova.plugin.ad.video.chartboost;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
