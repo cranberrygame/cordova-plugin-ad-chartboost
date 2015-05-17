@@ -7,7 +7,7 @@
 <script>
 
 var appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 
 /*
 var appId;
@@ -15,12 +15,12 @@ var appSignature;
 //android
 if (navigator.userAgent.match(/Android/i)) {
 	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 }
 //ios
 else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
 	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 }
 */
 
@@ -29,9 +29,9 @@ document.addEventListener("deviceready", function(){
 	//you can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova
 	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
 	
-	window.chartboost.setUp(mediaId, isOverlap);
+	window.chartboost.setUp(appId, appSignature);
 	
-	//full screen ad callback
+	//
 	window.chartboost.onFullScreenAdPreloaded = function() {
 		alert('onFullScreenAdPreloaded');
 	};
@@ -44,7 +44,7 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.onFullScreenAdHidden = function() {
 		alert('onFullScreenAdHidden');
 	};
-	//more apps ad callback
+	//
 	window.chartboost.onMoreAppsAdPreloaded = function() {
 		alert('onMoreAppsAdPreloaded');
 	};
@@ -57,7 +57,7 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.onMoreAppsAdHidden = function() {
 		alert('onMoreAppsAdHidden');
 	};
-	//rewarded video ad callback
+	//
 	window.chartboost.onRewardedVideoAdPreloaded = function() {
 		alert('onRewardedVideoAdPreloaded');
 	};
@@ -102,18 +102,14 @@ location parameter
 <p><button onclick="window.chartboost.preloadFullScreenAd('Default');">preloadFullScreenAd</button></p>
 <p><button onclick="window.chartboost.showFullScreenAd('Default');">showFullScreenAd</button></p>
 <br>
-<!-- more apps -->
 <p><button onclick="window.chartboost.preloadMoreAppsAd('Default');">preloadMoreAppsAd</button></p>
 <p><button onclick="window.chartboost.showMoreAppsAd('Default');">showMoreAppsAd</button></p>
 <br>
-<!-- rewarded video -->
 <p><button onclick="window.chartboost.preloadRewardedVideoAd('Default');">preloadRewardedVideoAd</button></p>
 <p><button onclick="window.chartboost.showRewardedVideoAd('Default');">showRewardedVideoAd</button></p>
 <br>
 <p><button onclick="alert(window.chartboost.isShowingFullScreenAd());">isShowingFullScreenAd</button></p>
-<br>
 <p><button onclick="alert(window.chartboost.isShowingMoreAppsAd());">isShowingdMoreAppsAd</button></p>
-<br>
 <p><button onclick="alert(window.chartboost.isShowingRewardedVideoAd());">isShowingRewardedVideoAd</button></p>
 
 </body>

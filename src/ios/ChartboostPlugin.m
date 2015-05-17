@@ -39,6 +39,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	//NSString *adUnitFullScreen = [command.arguments objectAtIndex: 1];
 	//BOOL isOverlap = [[command.arguments objectAtIndex: 2] boolValue];
 	//BOOL isTest = [[command.arguments objectAtIndex: 3] boolValue];
+	//NSArray *zoneIds = [command.arguments objectAtIndex:4];	
 	//NSLog(@"%@", adUnit);
 	//NSLog(@"%@", adUnitFullScreen);
 	//NSLog(@"%d", isOverlap);

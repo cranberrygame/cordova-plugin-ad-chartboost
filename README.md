@@ -43,7 +43,8 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.video.chartboost
 
 ## Construct2 ##
 Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/construct2.html
-
+<br>
+Now all the native plugins are installed automatically: https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
 # Server setting #
 ```c
 ```
@@ -60,7 +61,7 @@ https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings -
 # API #
 ```javascript
 var appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 
 /*
 var appId;
@@ -68,12 +69,12 @@ var appSignature;
 //android
 if (navigator.userAgent.match(/Android/i)) {
 	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 }
 //ios
 else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
 	appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
-	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE_ID";
+	appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
 }
 */
 
@@ -82,9 +83,9 @@ document.addEventListener("deviceready", function(){
 	//you can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova
 	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
 
-	window.chartboost.setUp(mediaId, isOverlap);
+	window.chartboost.setUp(appId, appSignature);
 	
-	//full screen ad callback
+	//
 	window.chartboost.onFullScreenAdPreloaded = function() {
 		alert('onFullScreenAdPreloaded');
 	};
@@ -97,7 +98,7 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.onFullScreenAdHidden = function() {
 		alert('onFullScreenAdHidden');
 	};
-	//more apps ad callback
+	//
 	window.chartboost.onMoreAppsAdPreloaded = function() {
 		alert('onMoreAppsAdPreloaded');
 	};
@@ -110,7 +111,7 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.onMoreAppsAdHidden = function() {
 		alert('onMoreAppsAdHidden');
 	};
-	//rewarded video ad callback
+	//
 	window.chartboost.onRewardedVideoAdPreloaded = function() {
 		alert('onRewardedVideoAdPreloaded');
 	};
@@ -154,18 +155,14 @@ location parameter
 window.chartboost.preloadFullScreenAd('Default');
 window.chartboost.showFullScreenAd('Default');
 
-//more apps
 window.chartboost.preloadMoreAppsAd('Default');
 window.chartboost.showMoreAppsAd('Default');
 
-//rewarded video
 window.chartboost.preloadRewardedVideoAd('Default');
 window.chartboost.showRewardedVideoAd('Default');
 
 alert(window.chartboost.isShowingFullScreenAd());//boolean: true or false
-
 alert(window.chartboost.isShowingMoreAppsAd());//boolean: true or false
-
 alert(window.chartboost.isShowingRewardedVideoAd());//boolean: true or false
 ```
 # Examples #
@@ -186,4 +183,3 @@ Plugins For Cordova<br>
 http://cranberrygame.github.io?referrer=github
 
 # Credits #
-
