@@ -62,7 +62,6 @@ https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings -
 ```javascript
 var appId = "REPLACE_THIS_WITH_YOUR_APP_ID";
 var appSignature = "REPLACE_THIS_WITH_YOUR_APP_SIGNATURE";
-
 /*
 var appId;
 var appSignature;
