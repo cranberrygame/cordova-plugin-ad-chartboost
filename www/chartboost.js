@@ -41,6 +41,7 @@ module.exports = {
 						 if (self.onFullScreenAdHidden)
 							self.onFullScreenAdHidden();
 					}
+					//
 					else if (result == "onMoreAppsAdPreloaded") {
 						if (self.onMoreAppsAdPreloaded)
 							self.onMoreAppsAdPreloaded();
@@ -60,7 +61,8 @@ module.exports = {
 					
 						 if (self.onMoreAppsAdHidden)
 							self.onMoreAppsAdHidden();
-					}					
+					}
+					//
 					else if (result == "onRewardedVideoAdPreloaded") {
 						if (self.onRewardedVideoAdPreloaded)
 							self.onRewardedVideoAdPreloaded();
@@ -168,11 +170,13 @@ module.exports = {
 	onFullScreenAdPreloaded: null,
 	onFullScreenAdLoaded: null,
 	onFullScreenAdShown: null,
-	onFullScreenAdHidden: null,	
+	onFullScreenAdHidden: null,
+	//
 	onMoreAppsAdPreloaded: null,
 	onMoreAppsAdLoaded: null,
 	onMoreAppsAdShown: null,
-	onMoreAppsAdHidden: null,	
+	onMoreAppsAdHidden: null,
+	//
 	onRewardedVideoAdPreloaded: null,
 	onRewardedVideoAdLoaded: null,
 	onRewardedVideoAdShown: null,

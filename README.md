@@ -155,13 +155,13 @@ location parameter
 */	
 
 //static interstitial, video interstial
-window.chartboost.preloadFullScreenAd('Default');
+window.chartboost.preloadFullScreenAd('Default');//option, download ad previously for fast show
 window.chartboost.showFullScreenAd('Default');
 
-window.chartboost.preloadMoreAppsAd('Default');
+window.chartboost.preloadMoreAppsAd('Default');//option, download ad previously for fast show
 window.chartboost.showMoreAppsAd('Default');
 
-window.chartboost.preloadRewardedVideoAd('Default');
+window.chartboost.preloadRewardedVideoAd('Default');//option, download ad previously for fast show
 window.chartboost.showRewardedVideoAd('Default');
 
 alert(window.chartboost.isShowingFullScreenAd());//boolean: true or false
