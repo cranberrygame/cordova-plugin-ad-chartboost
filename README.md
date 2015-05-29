@@ -7,8 +7,8 @@ Show chartboost full screen (static interstitial, video interstial), more apps, 
 
 Requires revmob account https://www.revmobmobileadnetwork.com
 
-Chartboost android SDK 5.2.0 (Apr. 6, 2015)
-Chartboost ios SDK 5.1.5 (Mar. 17, 2015)
+Android SDK Version 5.3.0 (May 7, 2015)
+iOS SDK Version 5.3.0 (May 7, 2015)
 
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
@@ -19,6 +19,13 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 
 # Change log #
 ```c
+1.0.46
+	Added Is showing full screen ad, Is showing more apps ad, Is showing rewarded video ad conditions.
+1.0.47
+	Added Loaded full screen ad, Loaded more apps ad, Loaded rewarded video ad conditions.
+	Updated SDK
+		Android SDK Version 5.3.0 (May 7, 2015)
+		iOS SDK Version 5.3.0 (May 7, 2015)
 ```
 # Install plugin #
 
@@ -46,7 +53,7 @@ https://build.phonegap.com/ - Apps - [specific project] - Update code - Zip file
 ```
 
 ## Construct2 ##
-Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/chartboost/construct2.html
+Download construct2 plugin: http://www.paywithapost.de/pay?id=4ef3f2be-26e8-4a04-b826-6680db13a8c8
 <br>
 Now all the native plugins are installed automatically: https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
 # Server setting #
@@ -163,6 +170,10 @@ window.chartboost.showMoreAppsAd('Default');
 
 window.chartboost.preloadRewardedVideoAd('Default');//option, download ad previously for fast show
 window.chartboost.showRewardedVideoAd('Default');
+
+alert(window.chartboost.loadedFullScreenAd());//boolean: true or false
+alert(window.chartboost.loadedMoreAppsAd());//boolean: true or false
+alert(window.chartboost.loadedRewardedVideoAd());//boolean: true or false
 
 alert(window.chartboost.isShowingFullScreenAd());//boolean: true or false
 alert(window.chartboost.isShowingMoreAppsAd());//boolean: true or false
