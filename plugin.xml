@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.cranberrygame.cordova.plugin.ad.chartboost"
-    version="1.0.47">
+    version="1.0.48">
 	
     <name>Cordova Chartboost plugin</name>
     <description>Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad</description>
@@ -33,8 +33,8 @@
         </config-file>
         
         <source-file src="src/android/ChartboostPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/ad/chartboost" />
+		
         <source-file src="src/android/chartboost.jar" target-dir="libs" />
-
     </platform>
 
 	<!-- ios -->
@@ -50,7 +50,6 @@
 		<source-file src="src/ios/ChartboostPlugin.m" />
 		
 		<framework src="src/ios/Chartboost.framework" custom="true" />
-		<!-- framework dependencies -->
 		<framework src="StoreKit.framework" weak="true" />
 		<framework src="Foundation.framework" />
 		<framework src="CoreGraphics.framework" />

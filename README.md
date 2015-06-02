@@ -44,7 +44,7 @@ Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 ```
 
 ## Cocoon ##
-https://cocoon.io - Create project - [specific project] - Setting - Plugins - Search - cranberrygame - chartboost
+https://cocoon.io - Create project - [specific project] - Setting - Plugins - Search - cranberrygame - chartboost - Save
 
 ## Phonegap build service (config.xml) ##
 https://build.phonegap.com/ - Apps - [specific project] - Update code - Zip file including config.xml
