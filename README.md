@@ -64,7 +64,10 @@ Now all the native plugins are installed automatically: https://plus.google.com/
 <img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign1.png"><br>
 <img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign2.png"><br>
 <img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign3.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign4.png">
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign4.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign5.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign6.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign7.png"><br>
 
 Test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
