@@ -1,0 +1,39 @@
+{
+  "name": "cordova-plugin-ad-chartboost",
+  "version": "1.0.72",
+  "description": "Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad",
+  "cordova": {
+    "id": "cordova-plugin-ad-chartboost",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cranberrygame/cordova-plugin-ad-chartboost.git"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "ad",
+    "video",
+    "chartboost",
+    "monetisation",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "cranberrygame",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cranberrygame/cordova-plugin-ad-chartboost/issues"
+  },
+  "homepage": "https://github.com/cranberrygame/cordova-plugin-ad-chartboost#readme"
+}

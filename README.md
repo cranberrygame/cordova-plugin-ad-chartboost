@@ -7,8 +7,8 @@ Show chartboost full screen (static interstitial, video interstial), more apps, 
 
 Requires revmob account https://www.revmobmobileadnetwork.com
 
-Android SDK Version 5.3.0 (May 7, 2015)
-iOS SDK Version 5.1.5 (Mar. 17, 2015)
+Android SDK Version 5.4.1 (Jun. 4, 2015)<br>
+iOS SDK Version 5.1.5 (Mar. 17, 2015)<br>
 
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
@@ -72,7 +72,7 @@ Now all the native plugins are installed automatically: https://plus.google.com/
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign6.png"><br>
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign7.png"><br>
 
-Test mode setting: 
+Test mode setting:<br>
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
 
 # API #
@@ -146,8 +146,7 @@ document.addEventListener("deviceready", function(){
 }, false);
 
 /*
-location parameter
-
+location parameter:
 'Default' - Supports legacy applications that only have one "Default" location
 'Startup' - Initial startup of game.
 'Home Screen' - Home screen the player first sees.
