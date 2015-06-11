@@ -33,15 +33,15 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 # Install plugin #
 
 ## Cordova cli ##
-https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@4.1.2
+https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@5.0.0
 ```c
-cordova plugin add com.cranberrygame.cordova.plugin.ad.chartboost
+cordova plugin add cordova-plugin-ad-chartboost
 ```
 
 ## Xdk ##
 https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 ```c
-Name: revmob
+Name: chartboost
 Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
 [v] Plugin is located in the Apache Cordova Plugins Registry
 ```
@@ -52,7 +52,7 @@ https://cocoon.io - Create project - [specific project] - Setting - Plugins - Cu
 ## Phonegap build service (config.xml) ##
 https://build.phonegap.com/ - Apps - [specific project] - Update code - Zip file including config.xml
 ```c
-<gap:plugin name="com.cranberrygame.cordova.plugin.ad.chartboost" source="plugins.cordova.io" />
+<gap:plugin name="cordova-plugin-ad-chartboost" source="npm" />
 ```
 
 ## Construct2 ##
@@ -63,14 +63,14 @@ Now all the native plugins are installed automatically: https://plus.google.com/
 ```c
 ```
 
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/app_id.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign1.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign2.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign3.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign4.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign5.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign6.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-ad-chartboost/blob/master/doc/publishing_campaign7.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/app_id.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign1.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign2.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign3.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign4.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign5.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign6.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign7.png"><br>
 
 Test mode setting: 
 https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
