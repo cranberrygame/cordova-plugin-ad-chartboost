@@ -1,9 +1,9 @@
 Cordova Chartboost plugin
 ====================
 # Overview #
-Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad
+Show chartboost interstitial (static interstitial, video interstial), more apps, rewarded video ad
 
-[android, ios] [cordova cli] [xdk]
+[android, ios] [cordova cli] [xdk] [cocoon]
 
 Requires revmob account https://www.revmobmobileadnetwork.com
 
@@ -29,6 +29,10 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 1.0.51
 	Downgrade SDK to fix ios armv7s build error
 		iOS SDK Version 5.1.5 (Mar. 17, 2015)
+1.0.74
+	Fixed android interstitial ad issue.
+	Changed "full screen ad" to "interstitial ad"
+		
 ```
 # Install plugin #
 
@@ -36,6 +40,7 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@5.0.0
 ```c
 cordova plugin add cordova-plugin-ad-chartboost
+(when build error, use github url: cordova plugin add cordova plugin add https://github.com/cranberrygame/cordova-plugin-ad-chartboost)
 ```
 
 ## Xdk ##
@@ -56,14 +61,17 @@ https://build.phonegap.com/ - Apps - [specific project] - Update code - Zip file
 ```
 
 ## Construct2 ##
-Download construct2 plugin: http://www.paywithapost.de/pay?id=4ef3f2be-26e8-4a04-b826-6680db13a8c8
-<br>
-Now all the native plugins are installed automatically: https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
+Download construct2 plugin<br>
+https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/index.html<br>
+How to install c2 native plugins in xdk, cocoon and cordova cli<br>
+https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
+
 # Server setting #
 ```c
 ```
 
-<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/app_id.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/app_id1.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/app_id2.png"><br>
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign1.png"><br>
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign2.png"><br>
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign3.png"><br>
@@ -73,7 +81,7 @@ Now all the native plugins are installed automatically: https://plus.google.com/
 <img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-ad-chartboost/master/doc/publishing_campaign7.png"><br>
 
 Test mode setting:<br>
-https://www.chartboost.com - Login - DASHBOARD - [specific app] - App Settings - Test Mode: select Disabled or Enabled 
+https://www.chartboost.com - Login - DASHBOARD - [specific app] - APP SETTINGS - Basic Settings - Test Mode: select Disabled or Enabled 
 
 # API #
 ```javascript
@@ -102,46 +110,46 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.setUp(appId, appSignature);
 	
 	//
-	window.chartboost.onFullScreenAdPreloaded = function() {
-		alert('onFullScreenAdPreloaded');
+	window.chartboost.onInterstitialAdPreloaded = function(location) {
+		alert('onInterstitialAdPreloaded: ' + location);
 	};
-	window.chartboost.onFullScreenAdLoaded = function() {
-		alert('onFullScreenAdLoaded');
+	window.chartboost.onInterstitialAdLoaded = function(location) {
+		alert('onInterstitialAdLoaded: ' + location);
 	};
-	window.chartboost.onFullScreenAdShown = function() {
-		alert('onFullScreenAdShown');
+	window.chartboost.onInterstitialAdShown = function(location) {
+		alert('onInterstitialAdShown: ' + location);
 	};
-	window.chartboost.onFullScreenAdHidden = function() {
-		alert('onFullScreenAdHidden');
-	};
-	//
-	window.chartboost.onMoreAppsAdPreloaded = function() {
-		alert('onMoreAppsAdPreloaded');
-	};
-	window.chartboost.onMoreAppsAdLoaded = function() {
-		alert('onMoreAppsAdLoaded');
-	};
-	window.chartboost.onMoreAppsAdShown = function() {
-		alert('onMoreAppsAdShown');
-	};
-	window.chartboost.onMoreAppsAdHidden = function() {
-		alert('onMoreAppsAdHidden');
+	window.chartboost.onInterstitialAdHidden = function(location) {
+		alert('onInterstitialAdHidden: ' + location);
 	};
 	//
-	window.chartboost.onRewardedVideoAdPreloaded = function() {
-		alert('onRewardedVideoAdPreloaded');
+	window.chartboost.onMoreAppsAdPreloaded = function(location) {
+		alert('onMoreAppsAdPreloaded: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdLoaded = function() {
-		alert('onRewardedVideoAdLoaded');
+	window.chartboost.onMoreAppsAdLoaded = function(location) {
+		alert('onMoreAppsAdLoaded: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdShown = function() {
-		alert('onRewardedVideoAdShown');
+	window.chartboost.onMoreAppsAdShown = function(location) {
+		alert('onMoreAppsAdShown: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdHidden = function() {
-		alert('onRewardedVideoAdHidden');
+	window.chartboost.onMoreAppsAdHidden = function(location) {
+		alert('onMoreAppsAdHidden: ' + location);
+	};
+	//
+	window.chartboost.onRewardedVideoAdPreloaded = function(location) {
+		alert('onRewardedVideoAdPreloaded: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdLoaded = function(location) {
+		alert('onRewardedVideoAdLoaded: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdShown = function(location) {
+		alert('onRewardedVideoAdShown: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdHidden = function(location) {
+		alert('onRewardedVideoAdHidden: ' + location);
 	};	
-	window.chartboost.onRewardedVideoAdCompleted = function() {
-		alert('onRewardedVideoAdCompleted');
+	window.chartboost.onRewardedVideoAdCompleted = function(location) {
+		alert('onRewardedVideoAdCompleted: ' + location);
 	};
 }, false);
 
@@ -167,8 +175,8 @@ location parameter:
 */	
 
 //static interstitial, video interstial
-window.chartboost.preloadFullScreenAd('Default');//option, download ad previously for fast show
-window.chartboost.showFullScreenAd('Default');
+window.chartboost.preloadInterstitialAd('Default');//option, download ad previously for fast show
+window.chartboost.showInterstitialAd('Default');
 
 window.chartboost.preloadMoreAppsAd('Default');//option, download ad previously for fast show
 window.chartboost.showMoreAppsAd('Default');
@@ -176,11 +184,11 @@ window.chartboost.showMoreAppsAd('Default');
 window.chartboost.preloadRewardedVideoAd('Default');//option, download ad previously for fast show
 window.chartboost.showRewardedVideoAd('Default');
 
-alert(window.chartboost.loadedFullScreenAd());//boolean: true or false
+alert(window.chartboost.loadedInterstitialAd());//boolean: true or false
 alert(window.chartboost.loadedMoreAppsAd());//boolean: true or false
 alert(window.chartboost.loadedRewardedVideoAd());//boolean: true or false
 
-alert(window.chartboost.isShowingFullScreenAd());//boolean: true or false
+alert(window.chartboost.isShowingInterstitialAd());//boolean: true or false
 alert(window.chartboost.isShowingMoreAppsAd());//boolean: true or false
 alert(window.chartboost.isShowingRewardedVideoAd());//boolean: true or false
 ```

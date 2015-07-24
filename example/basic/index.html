@@ -28,46 +28,46 @@ document.addEventListener("deviceready", function(){
 	window.chartboost.setUp(appId, appSignature);
 	
 	//
-	window.chartboost.onFullScreenAdPreloaded = function() {
-		alert('onFullScreenAdPreloaded');
+	window.chartboost.onInterstitialAdPreloaded = function(location) {
+		alert('onInterstitialAdPreloaded: ' + location);
 	};
-	window.chartboost.onFullScreenAdLoaded = function() {
-		alert('onFullScreenAdLoaded');
+	window.chartboost.onInterstitialAdLoaded = function(location) {
+		alert('onInterstitialAdLoaded: ' + location);
 	};
-	window.chartboost.onFullScreenAdShown = function() {
-		alert('onFullScreenAdShown');
+	window.chartboost.onInterstitialAdShown = function(location) {
+		alert('onInterstitialAdShown: ' + location);
 	};
-	window.chartboost.onFullScreenAdHidden = function() {
-		alert('onFullScreenAdHidden');
-	};
-	//
-	window.chartboost.onMoreAppsAdPreloaded = function() {
-		alert('onMoreAppsAdPreloaded');
-	};
-	window.chartboost.onMoreAppsAdLoaded = function() {
-		alert('onMoreAppsAdLoaded');
-	};
-	window.chartboost.onMoreAppsAdShown = function() {
-		alert('onMoreAppsAdShown');
-	};
-	window.chartboost.onMoreAppsAdHidden = function() {
-		alert('onMoreAppsAdHidden');
+	window.chartboost.onInterstitialAdHidden = function(location) {
+		alert('onInterstitialAdHidden: ' + location);
 	};
 	//
-	window.chartboost.onRewardedVideoAdPreloaded = function() {
-		alert('onRewardedVideoAdPreloaded');
+	window.chartboost.onMoreAppsAdPreloaded = function(location) {
+		alert('onMoreAppsAdPreloaded: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdLoaded = function() {
-		alert('onRewardedVideoAdLoaded');
+	window.chartboost.onMoreAppsAdLoaded = function(location) {
+		alert('onMoreAppsAdLoaded: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdShown = function() {
-		alert('onRewardedVideoAdShown');
+	window.chartboost.onMoreAppsAdShown = function(location) {
+		alert('onMoreAppsAdShown: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdHidden = function() {
-		alert('onRewardedVideoAdHidden');
+	window.chartboost.onMoreAppsAdHidden = function(location) {
+		alert('onMoreAppsAdHidden: ' + location);
 	};
-	window.chartboost.onRewardedVideoAdCompleted = function() {
-		alert('onRewardedVideoAdCompleted');
+	//
+	window.chartboost.onRewardedVideoAdPreloaded = function(location) {
+		alert('onRewardedVideoAdPreloaded: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdLoaded = function(location) {
+		alert('onRewardedVideoAdLoaded: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdShown = function(location) {
+		alert('onRewardedVideoAdShown: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdHidden = function(location) {
+		alert('onRewardedVideoAdHidden: ' + location);
+	};
+	window.chartboost.onRewardedVideoAdCompleted = function(location) {
+		alert('onRewardedVideoAdCompleted: ' + location);
 	};
 }, false);
 	
@@ -94,8 +94,8 @@ location parameter:
 </script>
 
 <!-- static interstitial, video interstial -->
-<p><button onclick="window.chartboost.preloadFullScreenAd('Default');">preloadFullScreenAd</button></p>
-<p><button onclick="window.chartboost.showFullScreenAd('Default');">showFullScreenAd</button></p>
+<p><button onclick="window.chartboost.preloadInterstitialAd('Default');">preloadInterstitialAd</button></p>
+<p><button onclick="window.chartboost.showInterstitialAd('Default');">showInterstitialAd</button></p>
 <br>
 <p><button onclick="window.chartboost.preloadMoreAppsAd('Default');">preloadMoreAppsAd</button></p>
 <p><button onclick="window.chartboost.showMoreAppsAd('Default');">showMoreAppsAd</button></p>
@@ -103,11 +103,11 @@ location parameter:
 <p><button onclick="window.chartboost.preloadRewardedVideoAd('Default');">preloadRewardedVideoAd</button></p>
 <p><button onclick="window.chartboost.showRewardedVideoAd('Default');">showRewardedVideoAd</button></p>
 <br>
-<p><button onclick="alert(window.chartboost.loadedFullScreenAd());">loadedFullScreenAd</button></p>
+<p><button onclick="alert(window.chartboost.loadedInterstitialAd());">loadedInterstitialAd</button></p>
 <p><button onclick="alert(window.chartboost.loadedMoreAppsAd());">loadedMoreAppsAd</button></p>
 <p><button onclick="alert(window.chartboost.loadedRewardedVideoAd());">loadedRewardedVideoAd</button></p>
 <br>
-<p><button onclick="alert(window.chartboost.isShowingFullScreenAd());">isShowingFullScreenAd</button></p>
+<p><button onclick="alert(window.chartboost.isShowingInterstitialAd());">isShowingInterstitialAd</button></p>
 <p><button onclick="alert(window.chartboost.isShowingMoreAppsAd());">isShowingdMoreAppsAd</button></p>
 <p><button onclick="alert(window.chartboost.isShowingRewardedVideoAd());">isShowingRewardedVideoAd</button></p>
 

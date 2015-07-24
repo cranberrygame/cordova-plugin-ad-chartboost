@@ -97,8 +97,10 @@ public class ChartboostPlugin extends CordovaPlugin {
 	protected boolean moreAppsAdPreload;
 	protected boolean rewardedVideoAdPreload;
 	
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-		super.initialize(cordova, webView);
+    @Override
+	public void pluginInitialize() {
+		super.pluginInitialize();
+		//
     }
 	
 	//@Override
@@ -150,13 +152,13 @@ public class ChartboostPlugin extends CordovaPlugin {
 
 			return true;
 		}			
-		else if (action.equals("preloadFullScreenAd")) {
-			preloadFullScreenAd(action, args, callbackContext);
+		else if (action.equals("preloadInterstitialAd")) {
+			preloadInterstitialAd(action, args, callbackContext);
 			
 			return true;
 		}
-		else if (action.equals("showFullScreenAd")) {
-			showFullScreenAd(action, args, callbackContext);
+		else if (action.equals("showInterstitialAd")) {
+			showInterstitialAd(action, args, callbackContext);
 						
 			return true;
 		}
@@ -239,26 +241,26 @@ public class ChartboostPlugin extends CordovaPlugin {
 		});
 	}
 	
-	private void preloadFullScreenAd(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+	private void preloadInterstitialAd(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		final String location = args.getString(0);
 		Log.d(LOG_TAG, String.format("%s", location));
 		
 		cordova.getActivity().runOnUiThread(new Runnable(){
 			@Override
 			public void run() {
-				_preloadFullScreenAd(location);
+				_preloadInterstitialAd(location);
 			}
 		});
 	}
 
-	private void showFullScreenAd(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+	private void showInterstitialAd(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		final String location = args.getString(0);
 		Log.d(LOG_TAG, String.format("%s", location));
 
 		cordova.getActivity().runOnUiThread(new Runnable(){
 			@Override
 			public void run() {
-				_showFullScreenAd(location);
+				_showInterstitialAd(location);
 			}
 		});
 	}
@@ -362,13 +364,13 @@ public class ChartboostPlugin extends CordovaPlugin {
 		Chartboost.setDelegate(new MyChartboostDelegate());
 	}
 
-	private void _preloadFullScreenAd(String location) {
+	private void _preloadInterstitialAd(String location) {
 		fullScreenAdPreload = true;
 		
 		Chartboost.cacheInterstitial(location);	
 	}
 
-	private void _showFullScreenAd(String location) {
+	private void _showInterstitialAd(String location) {
 		fullScreenAdPreload = false;		
 
 		Chartboost.showInterstitial(location);	
@@ -411,7 +413,16 @@ public class ChartboostPlugin extends CordovaPlugin {
 			Log.i(LOG_TAG, "didCacheInterstitial: "+ (location != null ? location : "null"));
 						
     		if (fullScreenAdPreload) {
-    			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onFullScreenAdPreloaded");
+			
+				JSONObject result = new JSONObject();
+				try {
+					result.put("event", "onInterstitialAdPreloaded");
+					result.put("message", location);
+				}
+				catch(JSONException ex){
+				}		
+    			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onInterstitialAdPreloaded");
+    			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
     			pr.setKeepCallback(true);
     			callbackContextKeepCallback.sendPluginResult(pr);
     			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -419,7 +430,15 @@ public class ChartboostPlugin extends CordovaPlugin {
     			//callbackContextKeepCallback.sendPluginResult(pr);		
     		}
     		
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onFullScreenAdLoaded");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onInterstitialAdLoaded");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onInterstitialAdLoaded");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -443,7 +462,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDisplayInterstitial(String location) {
 			Log.d(LOG_TAG, "didDisplayInterstitial: "+ (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onFullScreenAdShown");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onInterstitialAdShown");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onInterstitialAdShown");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -470,7 +497,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDismissInterstitial(String location) {
 			Log.d(LOG_TAG, "didDismissInterstitial: "+ (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onFullScreenAdHidden");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onInterstitialAdHidden");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onInterstitialAdHidden");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -490,7 +525,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 			Log.d(LOG_TAG, "didCacheMoreApps: " +  (location != null ? location : "null"));
 			
     		if (moreAppsAdPreload) {
-    			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdPreloaded");
+				JSONObject result = new JSONObject();
+				try {
+					result.put("event", "onMoreAppsAdPreloaded");
+					result.put("message", location);
+				}
+				catch(JSONException ex){
+				}			
+    			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdPreloaded");
+    			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
     			pr.setKeepCallback(true);
     			callbackContextKeepCallback.sendPluginResult(pr);
     			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -498,7 +541,15 @@ public class ChartboostPlugin extends CordovaPlugin {
     			//callbackContextKeepCallback.sendPluginResult(pr);		
     		}
     		
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdLoaded");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onMoreAppsAdLoaded");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdLoaded");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -522,7 +573,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDisplayMoreApps(String location) {
 			Log.d(LOG_TAG, "didDisplayMoreApps: " +  (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdShown");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onMoreAppsAdShown");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdShown");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -544,7 +603,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDismissMoreApps(String location) {
 			Log.d(LOG_TAG, "didDismissMoreApps: "+  (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdHidden");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onMoreAppsAdHidden");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onMoreAppsAdHidden");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -558,7 +625,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 			Log.d(LOG_TAG, "didCacheRewardedVideo: "+  (location != null ? location : "null"));
 					
     		if (rewardedVideoAdPreload) {
-    			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdPreloaded");
+				JSONObject result = new JSONObject();
+				try {
+					result.put("event", "onRewardedVideoAdPreloaded");
+					result.put("message", location);
+				}
+				catch(JSONException ex){
+				}			
+    			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdPreloaded");
+    			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
     			pr.setKeepCallback(true);
     			callbackContextKeepCallback.sendPluginResult(pr);
     			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -566,7 +641,15 @@ public class ChartboostPlugin extends CordovaPlugin {
     			//callbackContextKeepCallback.sendPluginResult(pr);		
     		}
     		
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdLoaded");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onRewardedVideoAdLoaded");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdLoaded");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -590,7 +673,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDisplayRewardedVideo(String location) {
 			Log.d(LOG_TAG, "didDisplayRewardedVideo: " + (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdShown");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onRewardedVideoAdShown");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdShown");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -612,7 +703,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didDismissRewardedVideo(String location) {
 			Log.d(LOG_TAG, "didDismissRewardedVideo: " + (location != null ? location : "null"));
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdHidden");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onRewardedVideoAdHidden");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdHidden");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
@@ -624,7 +723,15 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didCompleteRewardedVideo(String location, int reward) {
 			Log.d(LOG_TAG, "didCompleteRewardedVideo: " + (location != null ? location : "null") + ", "+reward);
 			
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdCompleted");
+			JSONObject result = new JSONObject();
+			try {
+				result.put("event", "onRewardedVideoAdCompleted");
+				result.put("message", location);
+			}
+			catch(JSONException ex){
+			}			
+			//PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdCompleted");
+			PluginResult pr = new PluginResult(PluginResult.Status.OK, result);
 			pr.setKeepCallback(true);
 			callbackContextKeepCallback.sendPluginResult(pr);
 			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);

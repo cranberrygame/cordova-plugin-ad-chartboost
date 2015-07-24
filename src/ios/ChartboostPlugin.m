@@ -22,6 +22,11 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 @synthesize moreAppsAdPreload;
 @synthesize rewardedVideoAdPreload;
 
+- (void) pluginInitialize {
+    [super pluginInitialize];    
+    //
+}
+
 - (void) setLicenseKey: (CDVInvokedUrlCommand*)command {
     NSString *email = [command.arguments objectAtIndex: 0];
     NSString *licenseKey = [command.arguments objectAtIndex: 1];
@@ -57,21 +62,21 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
     //}];
 }
 
-- (void) preloadFullScreenAd: (CDVInvokedUrlCommand*)command {
+- (void) preloadInterstitialAd: (CDVInvokedUrlCommand*)command {
 	NSString* location = [command.arguments objectAtIndex:0];
 	NSLog(@"%@", location);
 	
     [self.commandDelegate runInBackground:^{
-		[self _preloadFullScreenAd:location];
+		[self _preloadInterstitialAd:location];
     }];		
 }
 
-- (void) showFullScreenAd: (CDVInvokedUrlCommand*)command {
+- (void) showInterstitialAd: (CDVInvokedUrlCommand*)command {
 	NSString* location = [command.arguments objectAtIndex:0];
 	NSLog(@"%@", location);
 
     //[self.commandDelegate runInBackground:^{
-		[self _showFullScreenAd:location];
+		[self _showInterstitialAd:location];
     //}];
 }
 
@@ -171,13 +176,13 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	[Chartboost startWithAppId:self.appId appSignature:self.appSignature delegate:self];
 }
 
--(void) _preloadFullScreenAd:(NSString *)location {
+-(void) _preloadInterstitialAd:(NSString *)location {
 	self.fullScreenAdPreload = YES;	
 	
 	[Chartboost cacheInterstitial:location];
 }
 
--(void) _showFullScreenAd:(NSString *)location {
+-(void) _showInterstitialAd:(NSString *)location {
 	self.fullScreenAdPreload = NO;	
 	
 	[Chartboost showInterstitial:location];
@@ -186,7 +191,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 -(void) _preloadMoreAppsAd:(NSString *)location {
 	self.moreAppsAdPreload = YES;	
 	
-	[Chartboost cacheMoreApps:CBLocationHomeScreen];
+	[Chartboost cacheMoreApps:location];
 }
 
 -(void) _showMoreAppsAd:(NSString *)location {
@@ -224,7 +229,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	NSLog(@"%@", @"didCacheInterstitial");
 
 	if(fullScreenAdPreload) {
-		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdPreloaded"];
+		NSDictionary* result = @{
+			@"event":@"onInterstitialAdPreloaded",
+			@"message":location
+		};	
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onInterstitialAdPreloaded"];
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 		[pr setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -232,7 +242,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
 	}
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdLoaded"];
+	NSDictionary* result = @{
+		@"event":@"onInterstitialAdLoaded",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onInterstitialAdLoaded"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -288,7 +303,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 -(void) didDisplayInterstitial:(CBLocation)location{
 	NSLog(@"%@", @"didDisplayInterstitial");
 
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdShown"];
+	NSDictionary* result = @{
+		@"event":@"onInterstitialAdShown",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onInterstitialAdShown"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -322,7 +342,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didDismissInterstitial:(NSString *)location {
 	NSLog(@"%@", @"didDismissInterstitial");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onFullScreenAdHidden"];
+	NSDictionary* result = @{
+		@"event":@"onInterstitialAdHidden",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onInterstitialAdHidden"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -336,7 +361,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	NSLog(@"%@", @"didCacheMoreApps");
 	
 	if(moreAppsAdPreload) {
-		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdPreloaded"];
+		NSDictionary* result = @{
+			@"event":@"onMoreAppsAdPreloaded",
+			@"message":location
+		};		
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdPreloaded"];
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 		[pr setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -344,7 +374,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
 	}
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdLoaded"];
+	NSDictionary* result = @{
+		@"event":@"onMoreAppsAdLoaded",
+		@"message":location
+	};		
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdLoaded"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -391,7 +426,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didDisplayMoreApps:(CBLocation)location {
 	NSLog(@"%@", @"didDisplayMoreApps");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdShown"];
+	NSDictionary* result = @{
+		@"event":@"onMoreAppsAdShown",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdShown"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -421,7 +461,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didDismissMoreApps:(NSString *)location {
 	NSLog(@"%@", @"didDismissMoreApps");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdHidden"];
+	NSDictionary* result = @{
+		@"event":@"onMoreAppsAdHidden",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onMoreAppsAdHidden"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -446,7 +491,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 	NSLog(@"%@", @"didCacheRewardedVideo");
 
 	if(moreAppsAdPreload) {
-		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdPreloaded"];
+		NSDictionary* result = @{
+			@"event":@"onRewardedVideoAdPreloaded",
+			@"message":location
+		};	
+		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdPreloaded"];
+		CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 		[pr setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 		//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -454,7 +504,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 		//[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];			
 	}
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdLoaded"];
+	NSDictionary* result = @{
+		@"event":@"onRewardedVideoAdLoaded",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdLoaded"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -511,7 +566,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didDisplayRewardedVideo:(CBLocation)location {
 	NSLog(@"%@", @"didDisplayRewardedVideo");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdShown"];
+	NSDictionary* result = @{
+		@"event":@"onRewardedVideoAdShown",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdShown"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -530,7 +590,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didDismissRewardedVideo:(CBLocation)location {
 	NSLog(@"%@", @"didDismissRewardedVideo");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdHidden"];
+	NSDictionary* result = @{
+		@"event":@"onRewardedVideoAdHidden",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdHidden"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -551,7 +616,12 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
     //NSLog(@"completed rewarded video view at location %@ with reward amount %d", location, reward);
 	NSLog(@"%@", @"didCompleteRewardedVideo");
 	
-	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdCompleted"];
+	NSDictionary* result = @{
+		@"event":@"onRewardedVideoAdCompleted",
+		@"message":location
+	};	
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onRewardedVideoAdCompleted"];
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	[pr setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:pr callbackId:callbackIdKeepCallback];
 	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];

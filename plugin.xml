@@ -2,13 +2,13 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-ad-chartboost"
-    version="1.0.72">
+    version="1.0.74">
 	
     <name>Cordova Chartboost plugin</name>
-    <description>Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad</description>
+    <description>Show chartboost interstitial (static interstitial, video interstial), more apps, rewarded video ad</description>
     <author>Sang Ki Kwon (Cranberrygame)</author>	
     <license>MIT</license>
-    <keywords>cordova,plugin,ad,video,chartboost,monetisation</keywords>
+    <keywords>cordova,plugin,ad,chartboost,monetisation,interstitial,video</keywords>
     <repo>https://github.com/cranberrygame/cordova-plugin-ad-chartboost</repo>
     <issue>https://github.com/cranberrygame/cordova-plugin-ad-chartboost/issues</issue>	
 	<engines>
@@ -30,6 +30,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest">
                 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
                 <uses-permission android:name="android.permission.INTERNET" />
+                <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
         
         <source-file src="src/android/ChartboostPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/ad/chartboost" />

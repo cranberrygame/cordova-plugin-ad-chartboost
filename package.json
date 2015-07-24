@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-ad-chartboost",
-  "version": "1.0.72",
+  "version": "1.0.74",
   "description": "Show chartboost full screen (static interstitial, video interstial), more apps, rewarded video ad",
   "cordova": {
     "id": "cordova-plugin-ad-chartboost",
