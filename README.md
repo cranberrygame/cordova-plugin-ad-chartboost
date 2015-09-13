@@ -3,7 +3,7 @@ Cordova Chartboost plugin
 # Overview #
 Show chartboost interstitial (static interstitial, video interstial), more apps, rewarded video ad
 
-[android, ios] [cordova cli] [xdk] [cocoon]
+[android, ios] [cordova cli] [xdk] [cocoon] [phonegap build service]
 
 Requires revmob account https://www.revmobmobileadnetwork.com
 
@@ -44,7 +44,7 @@ cordova plugin add cordova-plugin-ad-chartboost
 ```
 
 ## Xdk ##
-https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
+https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA HYBRID MOBILE APP SETTINGS - Plugins - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 ```c
 Name: chartboost
 Plugin ID: com.cranberrygame.cordova.plugin.ad.chartboost
@@ -104,8 +104,8 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 
 document.addEventListener("deviceready", function(){
 	//if no license key, 2% ad traffic share for dev support.
-	//you can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova
-	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourFreeLicenseKey");
+	//you can get paid license key: https://cranberrygame.github.io/request_cordova_ad_plugin_paid_license_key
+	//window.chartboost.setLicenseKey("yourEmailId@yourEmaildDamin.com", "yourLicenseKey");
 
 	window.chartboost.setUp(appId, appSignature);
 	

@@ -30,7 +30,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						if (self.onFullScreenAdPreloaded)
 							self.onFullScreenAdPreloaded();
-//cranberrygame end; deprecated							
+//cranberrygame end							
 						if (self.onInterstitialAdPreloaded)
 							self.onInterstitialAdPreloaded();
 					}
@@ -40,7 +40,7 @@ module.exports = {
 //cranberrygame start; deprecated						
 						if (self.onFullScreenAdLoaded)
 							self.onFullScreenAdLoaded();
-//cranberrygame end; deprecated							
+//cranberrygame end						
 						if (self.onInterstitialAdLoaded)
 							self.onInterstitialAdLoaded();
 					}
@@ -51,7 +51,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						if (self.onFullScreenAdShown)
 							self.onFullScreenAdShown();
-//cranberrygame end; deprecated							
+//cranberrygame end						
 						if (self.onInterstitialAdShown)
 							self.onInterstitialAdShown();
 					}
@@ -61,7 +61,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						 if (self.onFullScreenAdHidden)
 							self.onFullScreenAdHidden();
-//cranberrygame end; deprecated							
+//cranberrygame end							
 						 if (self.onInterstitialAdHidden)
 							self.onInterstitialAdHidden();
 					}
@@ -134,7 +134,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						if (self.onFullScreenAdPreloaded)
 							self.onFullScreenAdPreloaded(location);
-//cranberrygame end; deprecated							
+//cranberrygame end							
 						if (self.onInterstitialAdPreloaded)
 							self.onInterstitialAdPreloaded(location);
 					}
@@ -144,7 +144,7 @@ module.exports = {
 //cranberrygame start; deprecated						
 						if (self.onFullScreenAdLoaded)
 							self.onFullScreenAdLoaded(location);
-//cranberrygame end; deprecated							
+//cranberrygame end						
 						if (self.onInterstitialAdLoaded)
 							self.onInterstitialAdLoaded(location);
 					}
@@ -155,7 +155,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						if (self.onFullScreenAdShown)
 							self.onFullScreenAdShown(location);
-//cranberrygame end; deprecated							
+//cranberrygame end						
 						if (self.onInterstitialAdShown)
 							self.onInterstitialAdShown(location);
 					}
@@ -165,7 +165,7 @@ module.exports = {
 //cranberrygame start; deprecated					
 						 if (self.onFullScreenAdHidden)
 							self.onFullScreenAdHidden(location);
-//cranberrygame end; deprecated							
+//cranberrygame end							
 						 if (self.onInterstitialAdHidden)
 							self.onInterstitialAdHidden(location);
 					}
@@ -250,7 +250,7 @@ module.exports = {
             [location]
         ); 
     },
-//cranberrygame end; deprecated
+//cranberrygame end
 	preloadInterstitialAd: function(location) {
         cordova.exec(
 			null,
@@ -309,7 +309,7 @@ module.exports = {
 	loadedFullScreenAd: function() {
 		return this._loadedInterstitialAd;
 	},
-//cranberrygame end; deprecated	
+//cranberrygame end
 	loadedInterstitialAd: function() {
 		return this._loadedInterstitialAd;
 	},
@@ -323,7 +323,7 @@ module.exports = {
 	isShowingFullScreenAd: function() {
 		return this._isShowingInterstitialAd;
 	},
-//cranberrygame end; deprecated	
+//cranberrygame end	
 	isShowingInterstitialAd: function() {
 		return this._isShowingInterstitialAd;
 	},
@@ -338,7 +338,7 @@ module.exports = {
 	onFullScreenAdLoaded: null,
 	onFullScreenAdShown: null,
 	onFullScreenAdHidden: null,
-//cranberrygame end; deprecated	
+//cranberrygame end
 	onInterstitialAdPreloaded: null,
 	onInterstitialAdLoaded: null,
 	onInterstitialAdShown: null,

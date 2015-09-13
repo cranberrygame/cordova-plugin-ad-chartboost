@@ -18,7 +18,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 @synthesize appId;
 @synthesize appSignature;
 //
-@synthesize fullScreenAdPreload;
+@synthesize interstitialAdPreload;
 @synthesize moreAppsAdPreload;
 @synthesize rewardedVideoAdPreload;
 
@@ -177,13 +177,13 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 }
 
 -(void) _preloadInterstitialAd:(NSString *)location {
-	self.fullScreenAdPreload = YES;	
+	self.interstitialAdPreload = YES;	
 	
 	[Chartboost cacheInterstitial:location];
 }
 
 -(void) _showInterstitialAd:(NSString *)location {
-	self.fullScreenAdPreload = NO;	
+	self.interstitialAdPreload = NO;	
 	
 	[Chartboost showInterstitial:location];
 }
@@ -228,7 +228,7 @@ static NSString *TEST_APP_SIGNATURE = @"37f4e779dc43837e7a6645002dffdeab0a97369b
 - (void) didCacheInterstitial:(NSString *)location {
 	NSLog(@"%@", @"didCacheInterstitial");
 
-	if(fullScreenAdPreload) {
+	if(interstitialAdPreload) {
 		NSDictionary* result = @{
 			@"event":@"onInterstitialAdPreloaded",
 			@"message":location

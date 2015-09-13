@@ -17,7 +17,7 @@
 @property NSString *appId;
 @property NSString *appSignature;
 //
-@property BOOL fullScreenAdPreload;
+@property BOOL interstitialAdPreload;
 @property BOOL moreAppsAdPreload;
 @property BOOL rewardedVideoAdPreload;
 

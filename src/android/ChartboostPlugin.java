@@ -93,7 +93,7 @@ public class ChartboostPlugin extends CordovaPlugin {
 	protected String appId;
 	protected String appSignature;
 	//
-	protected boolean fullScreenAdPreload;
+	protected boolean interstitialAdPreload;
 	protected boolean moreAppsAdPreload;
 	protected boolean rewardedVideoAdPreload;
 	
@@ -365,13 +365,13 @@ public class ChartboostPlugin extends CordovaPlugin {
 	}
 
 	private void _preloadInterstitialAd(String location) {
-		fullScreenAdPreload = true;
+		interstitialAdPreload = true;
 		
 		Chartboost.cacheInterstitial(location);	
 	}
 
 	private void _showInterstitialAd(String location) {
-		fullScreenAdPreload = false;		
+		interstitialAdPreload = false;		
 
 		Chartboost.showInterstitial(location);	
 	}
@@ -412,7 +412,7 @@ public class ChartboostPlugin extends CordovaPlugin {
 		public void didCacheInterstitial(String location) {
 			Log.i(LOG_TAG, "didCacheInterstitial: "+ (location != null ? location : "null"));
 						
-    		if (fullScreenAdPreload) {
+    		if (interstitialAdPreload) {
 			
 				JSONObject result = new JSONObject();
 				try {
