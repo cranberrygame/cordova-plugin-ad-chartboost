@@ -4,9 +4,8 @@
 //License: MIT (http://opensource.org/licenses/MIT)
 #import <Cordova/CDV.h>
 #import <Chartboost/Chartboost.h>
-////#import <Chartboost/CBNewsfeed.h>
 
-@interface ChartboostPlugin : CDVPlugin <ChartboostDelegate> ////, CBNewsfeedDelegate>
+@interface ChartboostPlugin : CDVPlugin <ChartboostDelegate>
 
 @property NSString *callbackIdKeepCallback;
 //
