@@ -6,7 +6,7 @@
 #import <Chartboost/Chartboost.h>
 ////#import <Chartboost/CBNewsfeed.h>
 
-@interface ChartboostPlugin : CDVPlugin <ChartboostDelegate, CBNewsfeedDelegate> 
+@interface ChartboostPlugin : CDVPlugin <ChartboostDelegate> ////, CBNewsfeedDelegate>
 
 @property NSString *callbackIdKeepCallback;
 //
