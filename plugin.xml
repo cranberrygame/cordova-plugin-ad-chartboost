@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-ad-chartboost"
-    version="1.0.75">
+    version="1.0.77">
 	
     <name>Cordova Chartboost plugin</name>
     <description>Show chartboost interstitial (static interstitial, video interstial), more apps, rewarded video ad</description>
