@@ -7,8 +7,8 @@ Show chartboost interstitial (static interstitial, video interstial), more apps,
 
 Requires revmob account https://www.revmobmobileadnetwork.com
 
-Android SDK 6.0.2 (October 30, 2015 18:29)<br>
-iOS SDK 6.0.1 (October 30, 2015 18:29)<br>
+Android SDK 6.1.0 (Nov. 19, 2015)<br>
+iOS SDK 6.1.1 (Nov. 12, 2015)<br>
 
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
@@ -34,6 +34,8 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 	Changed "full screen ad" to "interstitial ad"
 1.0.77
     Updated SDK (Android SDK 6.0.2, iOS SDK 6.0.1)
+1.0.78
+    Updated SDK (Android SDK 6.1.0, iOS SDK 6.1.1)
 ```
 # Install plugin #
 

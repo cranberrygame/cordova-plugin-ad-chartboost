@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-ad-chartboost"
-    version="1.0.77">
+    version="1.0.78">
 	
     <name>Cordova Chartboost plugin</name>
     <description>Show chartboost interstitial (static interstitial, video interstial), more apps, rewarded video ad</description>
@@ -27,10 +27,19 @@
             </feature>
         </config-file>
         
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity android:name="com.chartboost.sdk.CBImpressionActivity"
+               android:excludeFromRecents="true"
+               android:hardwareAccelerated="true"
+               android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+               android:configChanges="keyboardHidden|orientation|screenSize" />
+        </config-file>
+		
         <config-file target="AndroidManifest.xml" parent="/manifest">
-                <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-                <uses-permission android:name="android.permission.INTERNET" />
-                <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
         
         <source-file src="src/android/ChartboostPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/ad/chartboost" />
