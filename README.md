@@ -5,7 +5,7 @@ Show chartboost interstitial (static interstitial, video interstial), more apps,
 
 [android, ios] [cordova cli] [xdk] [cocoon] [phonegap build service]
 
-Requires revmob account https://www.revmobmobileadnetwork.com
+Requires chartboost account https://www.chartboost.com
 
 Android SDK 6.1.0 (Nov. 19, 2015)<br>
 iOS SDK 6.1.1 (Nov. 12, 2015)<br>
