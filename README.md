@@ -8,7 +8,7 @@ Show chartboost interstitial (static interstitial, video interstial), more apps,
 Requires chartboost account https://www.chartboost.com
 
 Android SDK 6.1.0 (Nov. 19, 2015)<br>
-iOS SDK 6.1.1 (Nov. 12, 2015)<br>
+iOS SDK 6.4.0 (Mar. 14, 2016)<br>
 
 I can't see any ads in my game - create a new publishing campaign in the Chartboost dashboard (takes 20 minutes to take effect)
 https://answers.chartboost.com/hc/en-us/articles/201121969-I-can-t-see-any-ads-in-my-game
@@ -36,6 +36,8 @@ You can see Cordova Plugins in one page: http://cranberrygame.github.io?referrer
     Updated SDK (Android SDK 6.0.2, iOS SDK 6.0.1)
 1.0.78
     Updated SDK (Android SDK 6.1.0, iOS SDK 6.1.1)
+1.0.81
+    Updated SDK (iOS SDK 6.4.0)
 ```
 # Install plugin #
 
