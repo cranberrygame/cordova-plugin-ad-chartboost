@@ -38,6 +38,8 @@ You can see Cordova Plugins in one page: http://cranberrygame.github.io?referrer
     Updated SDK (Android SDK 6.1.0, iOS SDK 6.1.1)
 1.0.81
     Updated SDK (iOS SDK 6.4.0)
+1.0.83
+    Updated SDK (Android SDK 6.6.1, iOS SDK 6.5.2)
 ```
 # Install plugin #
 
