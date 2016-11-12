@@ -182,6 +182,11 @@ public class ChartboostPlugin extends CordovaPlugin {
 						
 			return true;
 		}
+		else if (action.equals("sendBackButtonPressed")) {
+			sendBackButtonPressed(action, args, callbackContext);
+						
+			return true;
+		}
 		
 		return false; // Returning false results in a "MethodNotFound" error.
 	}
@@ -312,6 +317,16 @@ public class ChartboostPlugin extends CordovaPlugin {
 			}
 		});
 	}
+
+	private void sendBackButtonPressed(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+		
+		cordova.getActivity().runOnUiThread(new Runnable(){
+			@Override
+			public void run() {
+				_sendBackButtonPressed();
+			}
+		});
+	}
 	
 	public void _setLicenseKey(String email, String licenseKey) {
 		this.email = email;
@@ -398,6 +413,16 @@ public class ChartboostPlugin extends CordovaPlugin {
 		rewardedVideoAdPreload = false;
 		
 		Chartboost.showRewardedVideo(location);	
+	}
+
+	private void _sendBackButtonPressed() {
+
+		if (Chartboost.onBackPressed()) {
+			Log.d(LOG_TAG, "Sent BackButton, result: true");
+		}
+		else {
+			Log.d(LOG_TAG, "Sent BackButton, result: false");
+		}
 	}
 	
 	class MyChartboostDelegate extends ChartboostDelegate {

@@ -305,6 +305,15 @@ module.exports = {
             [location]
         ); 
     },
+    sendBackButtonPressed: function() {
+		cordova.exec(
+			null,
+            null,
+            'ChartboostPlugin',
+            'sendBackButtonPressed',
+            []
+        ); 
+    },
 //cranberrygame start; deprecated	
 	loadedFullScreenAd: function() {
 		return this._loadedInterstitialAd;
